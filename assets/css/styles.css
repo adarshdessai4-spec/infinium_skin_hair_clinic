@@ -1671,6 +1671,57 @@ img {
   }
 }
 
+@media (max-width: 600px) {
+  .result-shell {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .result-report,
+  .result-sidebar {
+    padding: 1rem;
+  }
+
+  .result-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .coach-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .coach-card img {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .timeline-track {
+    flex-direction: column;
+    gap: 1rem;
+    border-top: none;
+  }
+
+  .timeline-track div {
+    border-top: 2px solid #0f915c;
+    padding-top: 0.75rem;
+  }
+
+  .result-sidebar .result-product {
+    text-align: center;
+  }
+
+  .result-total {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .result-total button {
+    width: 100%;
+  }
+}
+
 .test-footnote {
   max-width: 520px;
   margin: 0 auto;
