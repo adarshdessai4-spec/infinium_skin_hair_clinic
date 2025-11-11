@@ -1537,6 +1537,41 @@ img {
   box-shadow: 0 10px 30px rgba(168, 212, 91, 0.2);
 }
 
+.test-radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.radio-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid #e3e5ec;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+}
+
+.radio-list__item input {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.radio-list__item input:checked {
+  accent-color: #a8d45b;
+}
+
+.radio-list__item.is-selected {
+  border-color: #a8d45b;
+  background: #f9fff0;
+  box-shadow: 0 10px 20px rgba(168, 212, 91, 0.15);
+}
+
 .hair-figure {
   width: 56px;
   height: 56px;

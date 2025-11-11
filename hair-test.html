@@ -216,6 +216,32 @@
           <span aria-hidden="true">➜</span>
         </button>
       </section>
+
+      <section class="test-card" data-step-panel="5">
+        <p class="test-eyebrow">Do you have a family history of hair loss?</p>
+        <div class="test-radio-list">
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Mother or anyone from mother's side of the family</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Father or anyone from father's side of the family</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Both</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>None</span>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="family-history" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
     </main>
     <script src="assets/js/hair-test.js" type="module"></script>
   </body>

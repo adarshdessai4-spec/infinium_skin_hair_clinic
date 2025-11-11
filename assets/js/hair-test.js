@@ -14,6 +14,7 @@ const initHairTestFlow = () => {
     { progress: 12, stepIndex: 0 },
     { progress: 24, stepIndex: 1 },
     { progress: 28, stepIndex: 1 },
+    { progress: 33, stepIndex: 1 },
   ];
   let currentStep = 0;
 
@@ -76,7 +77,7 @@ const initHairTestFlow = () => {
       const updateState = () => {
         const checked = document.querySelector(`input[name="${groupName}"]:checked`);
         inputs.forEach((input) => {
-          const card = input.closest('.hair-stage-card, .choice-card');
+          const card = input.closest('.hair-stage-card, .choice-card, .radio-list__item');
           if (card) {
             card.classList.toggle('is-selected', checked === input);
           }
