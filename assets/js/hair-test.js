@@ -215,19 +215,38 @@ const initHairTestFlow = () => {
       }
     });
 
+    const submitButton = document.querySelector('[data-upload-submit]');
+
+    const updateSubmitState = (file) => {
+      if (submitButton) {
+        submitButton.disabled = !file;
+      }
+    };
+
     wireButtonToInput(libraryBtn, libraryInput);
     if (cameraInput) {
       cameraInput.addEventListener('change', () => {
-        applySelection(cameraInput.files[0] || null);
+        const file = cameraInput.files[0] || null;
+        applySelection(file);
+        updateSubmitState(file);
       });
     }
     applySelection(null);
+    updateSubmitState(null);
 
     if (cameraBtn) {
       cameraBtn.addEventListener('click', () => {
         openCameraModal();
       });
     }
+
+    submitButton?.addEventListener('click', () => {
+      submitButton.textContent = 'Submitted ✔';
+      submitButton.disabled = true;
+      setTimeout(() => {
+        submitButton.textContent = 'Submit Photo';
+      }, 2000);
+    });
   };
 
   initUploadControls();

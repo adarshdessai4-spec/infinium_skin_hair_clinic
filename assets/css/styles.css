@@ -1422,6 +1422,11 @@ img {
   cursor: not-allowed;
 }
 
+.test-button--submit {
+  width: 100%;
+  max-width: 300px;
+}
+
 .test-footnote {
   max-width: 520px;
   margin: 0 auto;
