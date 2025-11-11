@@ -1503,6 +1503,137 @@ img {
   }
 }
 
+.result-shell {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.result-report,
+.result-sidebar {
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.result-header img {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.result-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: #8b8f98;
+}
+
+.result-bar {
+  margin: 1.25rem 0;
+}
+
+.result-bar__track {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: #d6ebdc;
+  overflow: hidden;
+}
+
+.result-bar__fill {
+  display: block;
+  height: 100%;
+  background: #18a558;
+}
+
+.result-summary {
+  background: #e8f9e8;
+  padding: 1rem;
+  border-radius: 14px;
+}
+
+.result-causes {
+  margin-top: 1.5rem;
+}
+
+.result-cause-grid {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.result-cause-card {
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid #f0dcbf;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.result-matches__strip {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.match-card {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.result-product {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
+}
+
+.result-addons {
+  border: 1px solid #0f915c;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.result-addons ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.result-total {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-total button {
+  background: #7ed957;
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .result-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
 .test-footnote {
   max-width: 520px;
   margin: 0 auto;

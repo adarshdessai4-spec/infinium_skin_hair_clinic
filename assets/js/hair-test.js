@@ -19,6 +19,7 @@ const initHairTestFlow = () => {
     { progress: 72, stepIndex: 2 },
     { progress: 89, stepIndex: 2 },
     { progress: 94, stepIndex: 3 },
+    { progress: 100, stepIndex: 3 },
   ];
   let currentStep = 0;
 
@@ -108,6 +109,7 @@ const initHairTestFlow = () => {
     const previewEl = document.querySelector('[data-upload-preview]');
     const submitButton = document.querySelector('[data-upload-submit]');
     const loadingPanelIndex = panels.findIndex((panel) => panel.dataset.stepPanel === '10');
+    const resultPanelIndex = panels.findIndex((panel) => panel.dataset.stepPanel === '11');
     let previewObjectURL = null;
     const modal = document.querySelector('[data-camera-modal]');
     const videoEl = modal?.querySelector('[data-camera-video]');
@@ -250,6 +252,12 @@ const initHairTestFlow = () => {
       if (loadingPanelIndex !== -1) {
         currentStep = loadingPanelIndex;
         updateUI();
+        if (resultPanelIndex !== -1) {
+          setTimeout(() => {
+            currentStep = resultPanelIndex;
+            updateUI();
+          }, 2000);
+        }
       }
     });
   };
