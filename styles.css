@@ -1019,6 +1019,84 @@ img {
   }
 }
 
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem 0;
+  }
+
+  .nav__inner {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .nav-cta {
+    flex: 1 1 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 2rem 0 3rem;
+  }
+
+  .hero-content {
+    margin-top: 2rem;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text .primary-cta {
+    width: 100%;
+  }
+
+  .hero-visual {
+    order: -1;
+    justify-self: center;
+  }
+
+  .review-card {
+    width: 100%;
+    margin: 2rem auto 0;
+  }
+
+  .press-logos {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .journey-card footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .community-panel {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .regimen-content {
+    padding: 1.75rem;
+  }
+
+  .footer-columns {
+    text-align: center;
+  }
+
+  .footer-columns ul {
+    align-items: center;
+  }
+}
+
 @media (max-width: 600px) {
   .nav {
     flex-direction: column;
