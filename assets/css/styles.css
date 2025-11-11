@@ -1243,3 +1243,157 @@ img {
     justify-content: flex-start;
   }
 }
+
+/* Hair Test Layout */
+.test-body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f7f8fa;
+  color: #1d1d1f;
+  min-height: 100vh;
+}
+
+.test-nav {
+  background: #3e3d3f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem clamp(1rem, 4vw, 4rem);
+}
+
+.test-brand p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.test-logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.test-exit {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+.test-shell {
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.test-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.test-step {
+  background: #dfe2eb;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: #4c4f5a;
+}
+
+.test-step.is-active {
+  background: #a8d45b;
+  color: #1a2b01;
+}
+
+.test-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.test-progress__bar {
+  flex: 1;
+  height: 6px;
+  background: #e1e4ec;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.test-progress__fill {
+  display: block;
+  height: 100%;
+  background: #a8d45b;
+}
+
+.test-progress__value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #71727e;
+}
+
+.test-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+  box-shadow: 0 25px 60px rgba(16, 30, 115, 0.08);
+  text-align: center;
+}
+
+.test-eyebrow {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.test-field {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.test-field input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+.test-field__line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #a8d45b;
+}
+
+.test-button {
+  background: #615f63;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.test-footnote {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: #8a8d99;
+}
+
+.test-footnote a {
+  color: inherit;
+  text-decoration: underline;
+}

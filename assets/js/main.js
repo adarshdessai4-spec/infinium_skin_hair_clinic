@@ -53,6 +53,14 @@
 
       dropdownMenu.addEventListener('click', (event) => {
         event.stopPropagation();
+        const target = event.target.closest('button[data-link]');
+        if (target) {
+          setDropdownState(false);
+          const href = target.getAttribute('data-link');
+          if (href && href !== '#') {
+            window.location.href = href;
+          }
+        }
       });
 
       document.addEventListener('click', () => {
