@@ -1428,3 +1428,27 @@ img {
   color: inherit;
   text-decoration: underline;
 }
+
+.test-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.test-option {
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 2.5rem;
+  background: #ededf0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d2f33;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.test-option:focus-visible {
+  outline: 2px solid #a8d45b;
+  outline-offset: 3px;
+}

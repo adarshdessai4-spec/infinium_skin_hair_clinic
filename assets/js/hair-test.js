@@ -8,7 +8,7 @@ const initHairTestFlow = () => {
   const progressValue = document.querySelector('[data-progress-value]');
   const prevButton = document.querySelector('[data-test-prev]');
   const steps = Array.from(document.querySelectorAll('.test-step'));
-  const progressPoints = [0, 8];
+  const progressPoints = [0, 8, 12];
   let currentStep = 0;
 
   const updateUI = () => {
