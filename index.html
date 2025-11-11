@@ -21,7 +21,13 @@
           <button class="nav-icon nav-icon--whatsapp" type="button" aria-label="WhatsApp">
             <span>WA</span>
           </button>
-          <button class="nav-icon nav-icon--menu" type="button" aria-label="Menu">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -29,6 +35,61 @@
         </div>
       </div>
     </nav>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
+      <div class="menu-overlay__grid">
+        <div class="menu-overlay__visual" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80"
+            alt=""
+          />
+        </div>
+        <div class="menu-overlay__body">
+          <section class="menu-overlay__section">
+            <p class="menu-overlay__eyebrow">What We Do</p>
+            <p class="menu-overlay__intro">
+              We help you take control of your hair loss journey with personalised, science-backed care.
+            </p>
+            <div class="menu-overlay__actions">
+              <button type="button">My Plan</button>
+              <button type="button">Hair Test ™</button>
+              <button type="button">Money Back Guarantee</button>
+              <button type="button">Infinium Combos</button>
+              <button type="button">Log In</button>
+              <button type="button">Referral</button>
+              <button type="button">Products &rsaquo;</button>
+            </div>
+          </section>
+          <section class="menu-overlay__section menu-overlay__section--links">
+            <div>
+              <p class="menu-overlay__label">How We Do It</p>
+              <ul>
+                <li><a href="#">Infinium Science</a></li>
+                <li><a href="#">Ingredients</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Hero's Page</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="menu-overlay__label">Who We Are</p>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="menu-overlay__label">Get In Touch</p>
+              <div class="menu-overlay__social">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="WhatsApp">WA</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
 
     <main>
       <header class="hero">
@@ -451,5 +512,45 @@
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        const overlay = document.getElementById('menuOverlay');
+        const menuButton = document.querySelector('.nav-icon--menu');
+        const closeButton = document.querySelector('.menu-overlay__close');
+
+        if (!overlay || !menuButton || !closeButton) {
+          return;
+        }
+
+        const toggleMenu = (forceState) => {
+          const isOpen = overlay.classList.contains('is-open');
+          const shouldOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
+
+          overlay.classList.toggle('is-open', shouldOpen);
+          overlay.setAttribute('aria-hidden', (!shouldOpen).toString());
+          document.body.classList.toggle('menu-open', shouldOpen);
+          menuButton.setAttribute('aria-expanded', shouldOpen.toString());
+
+          if (shouldOpen) {
+            closeButton.focus();
+          } else {
+            menuButton.focus();
+          }
+        };
+
+        menuButton.addEventListener('click', () => toggleMenu());
+        closeButton.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', (event) => {
+          if (event.target === overlay) {
+            toggleMenu(false);
+          }
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            toggleMenu(false);
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
