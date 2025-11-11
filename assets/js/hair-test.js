@@ -16,6 +16,7 @@ const initHairTestFlow = () => {
     { progress: 28, stepIndex: 1 },
     { progress: 33, stepIndex: 1 },
     { progress: 44, stepIndex: 1 },
+    { progress: 72, stepIndex: 2 },
   ];
   let currentStep = 0;
 
