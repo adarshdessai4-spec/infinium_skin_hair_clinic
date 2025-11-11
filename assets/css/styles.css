@@ -1427,6 +1427,82 @@ img {
   max-width: 300px;
 }
 
+.test-card--fullheight {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-loading {
+  text-align: center;
+}
+
+.test-loading__icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.test-loading h2 {
+  margin-bottom: 1rem;
+}
+
+.test-loading ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.test-loading li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-weight: 600;
+  color: #6a6d74;
+}
+
+.test-loading li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid #a8d45b;
+}
+
+.test-loading li.is-complete {
+  color: #2f6a12;
+}
+
+.test-loading li.is-complete::before {
+  background: #a8d45b;
+}
+
+.test-loading li.is-active {
+  color: #2f2f2f;
+}
+
+.test-loading li.is-active::before {
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-50%) scale(1.15);
+    opacity: 0.3;
+  }
+}
+
 .test-footnote {
   max-width: 520px;
   margin: 0 auto;

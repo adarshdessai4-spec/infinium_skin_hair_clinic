@@ -216,6 +216,7 @@ const initHairTestFlow = () => {
     });
 
     const submitButton = document.querySelector('[data-upload-submit]');
+    const loadingPanelIndex = panels.findIndex((panel) => panel.dataset.stepPanel === '10');
 
     const updateSubmitState = (file) => {
       if (submitButton) {
@@ -246,6 +247,10 @@ const initHairTestFlow = () => {
       setTimeout(() => {
         submitButton.textContent = 'Submit Photo';
       }, 2000);
+      if (loadingPanelIndex !== -1) {
+        currentStep = loadingPanelIndex;
+        updateUI();
+      }
     });
   };
 
