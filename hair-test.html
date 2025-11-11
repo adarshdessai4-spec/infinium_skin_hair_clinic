@@ -309,6 +309,16 @@
           </div>
           <p class="upload-status" data-upload-status>No file selected yet.</p>
         </div>
+        <div class="camera-modal" data-camera-modal hidden>
+          <div class="camera-modal__content">
+            <video autoplay playsinline muted data-camera-video></video>
+            <canvas data-camera-canvas hidden></canvas>
+            <div class="camera-modal__actions">
+              <button type="button" data-camera-capture>Capture</button>
+              <button type="button" data-camera-close>Close</button>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <script src="assets/js/hair-test.js" type="module"></script>

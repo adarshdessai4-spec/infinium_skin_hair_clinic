@@ -104,6 +104,12 @@ const initHairTestFlow = () => {
     const libraryInput = document.getElementById('scalpUploadInput');
     const cameraInput = document.getElementById('scalpCaptureInput');
     const statusEl = document.querySelector('[data-upload-status]');
+    const modal = document.querySelector('[data-camera-modal]');
+    const videoEl = modal?.querySelector('[data-camera-video]');
+    const canvasEl = modal?.querySelector('[data-camera-canvas]');
+    const captureBtn = modal?.querySelector('[data-camera-capture]');
+    const closeBtn = modal?.querySelector('[data-camera-close]');
+    let mediaStream = null;
 
     const updateStatus = (file) => {
       if (!statusEl) {
@@ -128,9 +134,82 @@ const initHairTestFlow = () => {
       });
     };
 
+    const stopCamera = () => {
+      if (mediaStream) {
+        mediaStream.getTracks().forEach((track) => track.stop());
+        mediaStream = null;
+      }
+      if (videoEl) {
+        videoEl.srcObject = null;
+      }
+    };
+
+    const closeCameraModal = () => {
+      if (!modal) {
+        return;
+      }
+      modal.classList.remove('is-open');
+      modal.hidden = true;
+      stopCamera();
+    };
+
+    const openCameraModal = async () => {
+      if (!modal || !videoEl || !navigator.mediaDevices?.getUserMedia) {
+        cameraInput?.click();
+        return;
+      }
+      try {
+        mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoEl.srcObject = mediaStream;
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add('is-open'));
+      } catch (error) {
+        cameraInput?.click();
+      }
+    };
+
+    if (captureBtn && canvasEl && videoEl) {
+      captureBtn.addEventListener('click', () => {
+        const context = canvasEl.getContext('2d');
+        if (!context) {
+          return;
+        }
+        canvasEl.width = videoEl.videoWidth || 640;
+        canvasEl.height = videoEl.videoHeight || 480;
+        context.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height);
+        canvasEl.toBlob((blob) => {
+          if (blob) {
+            const file = new File([blob], `scalp-photo-${Date.now()}.png`, { type: blob.type });
+            updateStatus(file);
+          }
+        }, 'image/png');
+        closeCameraModal();
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeCameraModal);
+    }
+
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeCameraModal();
+      }
+    });
+
     wireButtonToInput(libraryBtn, libraryInput);
-    wireButtonToInput(cameraBtn, cameraInput);
+    if (cameraInput) {
+      cameraInput.addEventListener('change', () => {
+        updateStatus(cameraInput.files[0] || null);
+      });
+    }
     updateStatus(null);
+
+    if (cameraBtn) {
+      cameraBtn.addEventListener('click', () => {
+        openCameraModal();
+      });
+    }
   };
 
   initUploadControls();
