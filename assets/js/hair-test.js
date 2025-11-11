@@ -104,6 +104,8 @@ const initHairTestFlow = () => {
     const libraryInput = document.getElementById('scalpUploadInput');
     const cameraInput = document.getElementById('scalpCaptureInput');
     const statusEl = document.querySelector('[data-upload-status]');
+    const previewEl = document.querySelector('[data-upload-preview]');
+    let previewObjectURL = null;
     const modal = document.querySelector('[data-camera-modal]');
     const videoEl = modal?.querySelector('[data-camera-video]');
     const canvasEl = modal?.querySelector('[data-camera-canvas]');
@@ -111,16 +113,31 @@ const initHairTestFlow = () => {
     const closeBtn = modal?.querySelector('[data-camera-close]');
     let mediaStream = null;
 
-    const updateStatus = (file) => {
-      if (!statusEl) {
-        return;
+    const applySelection = (file) => {
+      if (statusEl) {
+        if (file) {
+          statusEl.textContent = `Selected: ${file.name}`;
+          statusEl.classList.add('is-success');
+        } else {
+          statusEl.textContent = 'No file selected yet.';
+          statusEl.classList.remove('is-success');
+        }
       }
-      if (file) {
-        statusEl.textContent = `Selected: ${file.name}`;
-        statusEl.classList.add('is-success');
-      } else {
-        statusEl.textContent = 'No file selected yet.';
-        statusEl.classList.remove('is-success');
+
+      if (previewEl) {
+        if (previewObjectURL) {
+          URL.revokeObjectURL(previewObjectURL);
+          previewObjectURL = null;
+        }
+        if (file) {
+          previewObjectURL = URL.createObjectURL(file);
+          previewEl.src = previewObjectURL;
+        } else {
+          const fallback = previewEl.dataset.defaultSrc || previewEl.getAttribute('data-default-src');
+          if (fallback) {
+            previewEl.src = fallback;
+          }
+        }
       }
     };
 
@@ -130,7 +147,7 @@ const initHairTestFlow = () => {
       }
       button.addEventListener('click', () => input.click());
       input.addEventListener('change', () => {
-        updateStatus(input.files[0] || null);
+        applySelection(input.files[0] || null);
       });
     };
 
@@ -180,7 +197,7 @@ const initHairTestFlow = () => {
         canvasEl.toBlob((blob) => {
           if (blob) {
             const file = new File([blob], `scalp-photo-${Date.now()}.png`, { type: blob.type });
-            updateStatus(file);
+            applySelection(file);
           }
         }, 'image/png');
         closeCameraModal();
@@ -200,10 +217,10 @@ const initHairTestFlow = () => {
     wireButtonToInput(libraryBtn, libraryInput);
     if (cameraInput) {
       cameraInput.addEventListener('change', () => {
-        updateStatus(cameraInput.files[0] || null);
+        applySelection(cameraInput.files[0] || null);
       });
     }
-    updateStatus(null);
+    applySelection(null);
 
     if (cameraBtn) {
       cameraBtn.addEventListener('click', () => {
