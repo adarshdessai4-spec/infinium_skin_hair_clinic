@@ -1417,6 +1417,11 @@ img {
   margin-bottom: 1.5rem;
 }
 
+.test-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .test-footnote {
   max-width: 520px;
   margin: 0 auto;
@@ -1451,4 +1456,274 @@ img {
 .test-option:focus-visible {
   outline: 2px solid #a8d45b;
   outline-offset: 3px;
+}
+
+.test-hair-stage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.hair-stage-card {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid #e3e5ec;
+  background: #f5f6fa;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.hair-stage-card input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hair-stage-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hair-stage-card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: #2e3036;
+}
+
+.hair-stage-card__label::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #2e3036;
+  display: inline-block;
+}
+
+.hair-stage-card input:checked + .hair-stage-card__body .hair-stage-card__label::before {
+  background: #a8d45b;
+  border-color: #a8d45b;
+}
+
+.hair-stage-card__figures {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hair-stage-card.is-selected {
+  border-color: #a8d45b;
+  background: #f9fff0;
+  box-shadow: 0 10px 30px rgba(168, 212, 91, 0.2);
+}
+
+.hair-figure {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f7cfa5;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.hair-figure::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: var(--hair-depth, 32px);
+  background: var(--hair-color, #332e2b);
+  border-bottom-left-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+}
+
+.hair-figure.stage-1 {
+  --hair-depth: 32px;
+}
+
+.hair-figure.stage-2 {
+  --hair-depth: 26px;
+}
+
+.hair-figure.stage-3 {
+  --hair-depth: 20px;
+}
+
+.hair-figure.stage-4 {
+  --hair-depth: 14px;
+}
+
+.hair-figure.stage-5 {
+  --hair-depth: 9px;
+}
+
+.hair-figure.stage-6 {
+  --hair-depth: 5px;
+}
+
+.hair-figure.stage-heavy::before {
+  height: 6px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #cc3f3f,
+    #cc3f3f 6px,
+    #4c2f2f 6px,
+    #4c2f2f 12px
+  );
+}
+
+.hair-figure.stage-coin {
+  --hair-depth: 24px;
+  background: radial-gradient(circle at 50% 30%, #cc3f3f 12%, transparent 13%), #f7cfa5;
+}
+.test-hair-stage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.hair-stage-card {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid #e3e5ec;
+  background: #f5f6fa;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.hair-stage-card input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hair-stage-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hair-stage-card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: #2e3036;
+}
+
+.hair-stage-card__label::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #2e3036;
+  display: inline-block;
+}
+
+.hair-stage-card input:checked + .hair-stage-card__body .hair-stage-card__label::before {
+  background: #a8d45b;
+  border-color: #a8d45b;
+}
+
+.hair-stage-card__figures {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hair-figure {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f7cfa5;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.hair-figure::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: var(--hair-depth, 32px);
+  background: var(--hair-color, #332e2b);
+  border-bottom-left-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+}
+
+.hair-figure.stage-1 {
+  --hair-depth: 32px;
+}
+
+.hair-figure.stage-2 {
+  --hair-depth: 26px;
+}
+
+.hair-figure.stage-3 {
+  --hair-depth: 20px;
+}
+
+.hair-figure.stage-4 {
+  --hair-depth: 14px;
+}
+
+.hair-figure.stage-5 {
+  --hair-depth: 9px;
+}
+
+.hair-figure.stage-6 {
+  --hair-depth: 5px;
+}
+
+.hair-figure.stage-heavy::before {
+  height: 6px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #cc3f3f,
+    #cc3f3f 6px,
+    #4c2f2f 6px,
+    #4c2f2f 12px
+  );
+}
+
+.hair-figure.stage-coin {
+  --hair-depth: 26px;
+  background: radial-gradient(circle at 50% 30%, #cc3f3f 12%, transparent 13%), #f7cfa5;
+}
+
+.test-hair-stage .hair-stage-card {
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.test-hair-stage .hair-stage-card input:checked + .hair-stage-card__body {
+  color: #152001;
+}
+
+.test-hair-stage .hair-stage-card input:checked ~ .hair-stage-card__body {
+  color: #152001;
 }
