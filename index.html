@@ -17,7 +17,22 @@
       <div class="nav__inner">
         <div class="logo">Infinium Hair & Skin Care Clinic</div>
         <div class="nav-right">
-          <button class="nav-cta" type="button">Take The Hair & Skin Test ™</button>
+          <div class="nav-dropdown">
+            <button
+              class="nav-cta nav-cta--dropdown"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="navTestMenu"
+            >
+              Take A Test
+              <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="nav-dropdown__menu" id="navTestMenu" role="menu">
+              <li role="presentation"><button type="button" role="menuitem">Hair Test ™</button></li>
+              <li role="presentation"><button type="button" role="menuitem">Skin Test</button></li>
+            </ul>
+          </div>
           <button class="nav-icon nav-icon--whatsapp" type="button" aria-label="WhatsApp">
             <span>WA</span>
           </button>
