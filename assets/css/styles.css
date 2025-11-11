@@ -1572,6 +1572,22 @@ img {
   box-shadow: 0 10px 20px rgba(168, 212, 91, 0.15);
 }
 
+.radio-list__item--stacked {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.radio-list__item--stacked span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.radio-list__item small {
+  font-weight: 400;
+  color: #6b6e78;
+}
+
 .hair-figure {
   width: 56px;
   height: 56px;
