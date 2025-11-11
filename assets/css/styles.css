@@ -1594,6 +1594,43 @@ img {
   font-size: 0.85rem;
 }
 
+.coach-card {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.coach-card img {
+  width: 160px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.result-timeline {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: #e6f7ed;
+}
+
+.timeline-track {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  border-top: 2px solid #0f915c;
+  padding-top: 1rem;
+}
+
+.timeline-track div {
+  text-align: center;
+  flex: 1;
+}
+
 .result-product {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding: 0.75rem 0;
