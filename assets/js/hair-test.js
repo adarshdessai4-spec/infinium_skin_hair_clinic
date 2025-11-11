@@ -106,6 +106,8 @@ const initHairTestFlow = () => {
     const cameraInput = document.getElementById('scalpCaptureInput');
     const statusEl = document.querySelector('[data-upload-status]');
     const previewEl = document.querySelector('[data-upload-preview]');
+    const submitButton = document.querySelector('[data-upload-submit]');
+    const loadingPanelIndex = panels.findIndex((panel) => panel.dataset.stepPanel === '10');
     let previewObjectURL = null;
     const modal = document.querySelector('[data-camera-modal]');
     const videoEl = modal?.querySelector('[data-camera-video]');
@@ -113,6 +115,12 @@ const initHairTestFlow = () => {
     const captureBtn = modal?.querySelector('[data-camera-capture]');
     const closeBtn = modal?.querySelector('[data-camera-close]');
     let mediaStream = null;
+
+    const updateSubmitState = (file) => {
+      if (submitButton) {
+        submitButton.disabled = !file;
+      }
+    };
 
     const applySelection = (file) => {
       if (statusEl) {
@@ -140,6 +148,8 @@ const initHairTestFlow = () => {
           }
         }
       }
+
+      updateSubmitState(file);
     };
 
     const wireButtonToInput = (button, input) => {
@@ -215,21 +225,11 @@ const initHairTestFlow = () => {
       }
     });
 
-    const submitButton = document.querySelector('[data-upload-submit]');
-    const loadingPanelIndex = panels.findIndex((panel) => panel.dataset.stepPanel === '10');
-
-    const updateSubmitState = (file) => {
-      if (submitButton) {
-        submitButton.disabled = !file;
-      }
-    };
-
     wireButtonToInput(libraryBtn, libraryInput);
     if (cameraInput) {
       cameraInput.addEventListener('change', () => {
         const file = cameraInput.files[0] || null;
         applySelection(file);
-        updateSubmitState(file);
       });
     }
     applySelection(null);
