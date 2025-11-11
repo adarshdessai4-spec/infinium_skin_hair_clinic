@@ -174,7 +174,44 @@
             </div>
           </label>
         </div>
-        <button class="test-button" type="button" data-test-next>
+        <button class="test-button" type="button" data-test-next data-choice-next="hair-stage" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="4">
+        <p class="test-eyebrow">Where are you noticing hair loss?</p>
+        <div class="test-choice-grid">
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">Front only</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-2"></div>
+              </div>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">At the top of the head only</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-heavy"></div>
+              </div>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">Both front and top of the head</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-3"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="hair-loss-area" disabled>
           Next
           <span aria-hidden="true">➜</span>
         </button>

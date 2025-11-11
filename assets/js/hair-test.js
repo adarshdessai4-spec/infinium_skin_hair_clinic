@@ -13,6 +13,7 @@ const initHairTestFlow = () => {
     { progress: 8, stepIndex: 0 },
     { progress: 12, stepIndex: 0 },
     { progress: 24, stepIndex: 1 },
+    { progress: 28, stepIndex: 1 },
   ];
   let currentStep = 0;
 
@@ -61,27 +62,37 @@ const initHairTestFlow = () => {
     });
   }
 
-  const hairStageInputs = document.querySelectorAll('input[name="hair-stage"]');
-  const hairStageCards = document.querySelectorAll('.hair-stage-card');
-  const hairStageNextButton = document.querySelector('[data-step-panel="3"] [data-test-next]');
+  const setupChoiceGroups = () => {
+    document.querySelectorAll('[data-choice-next]').forEach((button) => {
+      const groupName = button.getAttribute('data-choice-next');
+      if (!groupName) {
+        return;
+      }
+      const inputs = Array.from(document.querySelectorAll(`input[name="${groupName}"]`));
+      if (!inputs.length) {
+        return;
+      }
 
-  const updateHairStageState = () => {
-    const checked = document.querySelector('input[name="hair-stage"]:checked');
-    hairStageCards.forEach((card) => {
-      card.classList.toggle('is-selected', checked ? card.contains(checked) : false);
+      const updateState = () => {
+        const checked = document.querySelector(`input[name="${groupName}"]:checked`);
+        inputs.forEach((input) => {
+          const card = input.closest('.hair-stage-card, .choice-card');
+          if (card) {
+            card.classList.toggle('is-selected', checked === input);
+          }
+        });
+        button.disabled = !checked;
+      };
+
+      inputs.forEach((input) => {
+        input.addEventListener('change', updateState);
+      });
+
+      updateState();
     });
-    if (hairStageNextButton) {
-      hairStageNextButton.disabled = !checked;
-    }
   };
 
-  hairStageInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-      updateHairStageState();
-    });
-  });
-
-  updateHairStageState();
+  setupChoiceGroups();
 
   updateUI();
 };
