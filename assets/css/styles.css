@@ -1639,6 +1639,16 @@ img {
   color: #fff;
 }
 
+.upload-status {
+  font-size: 0.9rem;
+  color: #6b6d76;
+}
+
+.upload-status.is-success {
+  color: #2f6a12;
+  font-weight: 600;
+}
+
 .hair-figure {
   width: 56px;
   height: 56px;

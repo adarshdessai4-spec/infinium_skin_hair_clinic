@@ -302,9 +302,12 @@
             <span>Try clicking a photo like the sample above</span>
           </div>
           <div class="test-upload__actions">
-            <button class="upload-btn" type="button">Upload Scalp Photo</button>
-            <button class="upload-btn upload-btn--dark" type="button">Take A Picture</button>
+            <input type="file" id="scalpUploadInput" accept="image/*" hidden />
+            <input type="file" id="scalpCaptureInput" accept="image/*" capture="environment" hidden />
+            <button class="upload-btn" type="button" data-upload-trigger="library">Upload Scalp Photo</button>
+            <button class="upload-btn upload-btn--dark" type="button" data-upload-trigger="camera">Take A Picture</button>
           </div>
+          <p class="upload-status" data-upload-status>No file selected yet.</p>
         </div>
       </section>
     </main>

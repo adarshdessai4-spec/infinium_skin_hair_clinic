@@ -98,6 +98,43 @@ const initHairTestFlow = () => {
 
   setupChoiceGroups();
 
+  const initUploadControls = () => {
+    const libraryBtn = document.querySelector('[data-upload-trigger="library"]');
+    const cameraBtn = document.querySelector('[data-upload-trigger="camera"]');
+    const libraryInput = document.getElementById('scalpUploadInput');
+    const cameraInput = document.getElementById('scalpCaptureInput');
+    const statusEl = document.querySelector('[data-upload-status]');
+
+    const updateStatus = (file) => {
+      if (!statusEl) {
+        return;
+      }
+      if (file) {
+        statusEl.textContent = `Selected: ${file.name}`;
+        statusEl.classList.add('is-success');
+      } else {
+        statusEl.textContent = 'No file selected yet.';
+        statusEl.classList.remove('is-success');
+      }
+    };
+
+    const wireButtonToInput = (button, input) => {
+      if (!button || !input) {
+        return;
+      }
+      button.addEventListener('click', () => input.click());
+      input.addEventListener('change', () => {
+        updateStatus(input.files[0] || null);
+      });
+    };
+
+    wireButtonToInput(libraryBtn, libraryInput);
+    wireButtonToInput(cameraBtn, cameraInput);
+    updateStatus(null);
+  };
+
+  initUploadControls();
+
   updateUI();
 };
 
