@@ -1371,6 +1371,37 @@ img {
   background: #a8d45b;
 }
 
+.test-card[data-step-panel] {
+  display: none;
+}
+
+.test-card.is-active-panel {
+  display: block;
+}
+
+.test-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.test-prev {
+  background: none;
+  border: none;
+  color: #4a4e59;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0;
+}
+
+.test-prev:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .test-button {
   background: #615f63;
   color: #fff;

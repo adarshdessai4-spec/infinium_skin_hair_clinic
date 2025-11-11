@@ -22,20 +22,25 @@
     </header>
 
     <main class="test-shell">
+      <div class="test-top-row">
+        <button class="test-prev" type="button" data-test-prev disabled>
+          &#8592; Previous
+        </button>
+      </div>
       <div class="test-steps">
-        <div class="test-step is-active">
+        <div class="test-step is-active" data-step-index="0">
           <span>About</span>
           <span>You</span>
         </div>
-        <div class="test-step">
+        <div class="test-step" data-step-index="1">
           <span>Hair</span>
           <span>Health</span>
         </div>
-        <div class="test-step">
+        <div class="test-step" data-step-index="2">
           <span>Internal</span>
           <span>Health</span>
         </div>
-        <div class="test-step">
+        <div class="test-step" data-step-index="3">
           <span>Scalp</span>
           <span>Assessment</span>
         </div>
@@ -43,18 +48,18 @@
 
       <div class="test-progress">
         <div class="test-progress__bar">
-          <span class="test-progress__fill" style="width: 0%"></span>
+          <span class="test-progress__fill" data-progress-fill style="width: 0%"></span>
         </div>
-        <span class="test-progress__value">0%</span>
+        <span class="test-progress__value" data-progress-value>0%</span>
       </div>
 
-      <section class="test-card">
+      <section class="test-card is-active-panel" data-step-panel="0">
         <p class="test-eyebrow">Before we start, can we get your name?</p>
         <label class="test-field">
           <input type="text" placeholder="Your Name" aria-label="Your name" />
           <span class="test-field__line"></span>
         </label>
-        <button class="test-button" type="button">
+        <button class="test-button" type="button" data-test-next>
           Next
           <span aria-hidden="true">➜</span>
         </button>
@@ -64,6 +69,19 @@
           <a href="#">Learn more</a>
         </p>
       </section>
+
+      <section class="test-card" data-step-panel="1">
+        <p class="test-eyebrow">How old are you?</p>
+        <label class="test-field">
+          <input type="number" placeholder="How old are you?" aria-label="How old are you?" />
+          <span class="test-field__line"></span>
+        </label>
+        <button class="test-button" type="button" data-test-next>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
     </main>
+    <script src="assets/js/hair-test.js" type="module"></script>
   </body>
 </html>
