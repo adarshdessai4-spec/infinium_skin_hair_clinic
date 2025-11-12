@@ -74,4 +74,51 @@
       });
     }
   }
+
+  const moneyBackExit = document.querySelector('.money-back__exit');
+  if (moneyBackExit) {
+    moneyBackExit.addEventListener('click', () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  }
+
+  const eligibilityTrigger = document.querySelector('[data-eligibility-trigger]');
+  const eligibilityModal = document.getElementById('eligibilityModal');
+
+  if (eligibilityTrigger && eligibilityModal) {
+    const closeButtons = eligibilityModal.querySelectorAll('[data-eligibility-close]');
+    const overlay = eligibilityModal.querySelector('.eligibility-modal__overlay');
+
+    const setModalState = (open) => {
+      eligibilityModal.classList.toggle('is-open', open);
+      eligibilityModal.setAttribute('aria-hidden', (!open).toString());
+      document.body.classList.toggle('modal-open', open);
+      if (open) {
+        eligibilityModal.querySelector('.eligibility-modal__close').focus();
+      } else {
+        eligibilityTrigger.focus();
+      }
+    };
+
+    eligibilityTrigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      setModalState(true);
+    });
+
+    closeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setModalState(false));
+    });
+
+    overlay?.addEventListener('click', () => setModalState(false));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && eligibilityModal.classList.contains('is-open')) {
+        setModalState(false);
+      }
+    });
+  }
 })();
