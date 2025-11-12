@@ -1152,21 +1152,22 @@ img {
   }
 
   .nav__inner {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.65rem;
-    align-items: stretch;
+    align-items: center;
     padding: 0 clamp(1rem, 4vw, 1.5rem);
   }
 
   .nav-right {
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
     gap: 0.5rem;
   }
 
   .nav-cta {
-    flex: 1 1 100%;
+    flex: 0 0 auto;
     padding: 0.65rem 1.25rem;
     font-size: 0.85rem;
   }
