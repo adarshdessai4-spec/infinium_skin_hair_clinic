@@ -91,6 +91,7 @@
   if (loginModal && loginTriggers.length) {
     const closeButtons = loginModal.querySelectorAll('[data-login-close]');
     const overlay = loginModal.querySelector('.login-modal__overlay');
+    const errorField = loginModal.querySelector('[data-login-error]');
     let lastLoginTrigger = null;
     const numberStep = loginModal.querySelector('[data-login-step="number"]');
     const otpStep = loginModal.querySelector('[data-login-step="otp"]');
@@ -102,10 +103,51 @@
     const countdownLabel = loginModal.querySelector('[data-login-countdown]');
     const verifyButton = loginModal.querySelector('[data-login-action="verify"]');
 
+    const OTP_API_BASE = window.__INF_OTP_API_BASE || '';
     const OTP_SECONDS = 60;
     let otpTimerId = null;
     let currentCountdown = OTP_SECONDS;
     let currentPhoneDisplay = '+91 XXXXXXXX';
+    let currentPhoneDigits = '';
+
+    const requestOtpApi = async (path, payload) => {
+      const response = await fetch(`${OTP_API_BASE}${path}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (_) {
+        data = {};
+      }
+      if (!response.ok) {
+        throw new Error(data?.message || 'Something went wrong. Please try again.');
+      }
+      return data;
+    };
+
+    const setButtonLoading = (button, isLoading, loadingText) => {
+      if (!button) return;
+      if (!button.dataset.defaultText) {
+        button.dataset.defaultText = button.textContent;
+      }
+      button.disabled = isLoading;
+      if (isLoading && loadingText) {
+        button.textContent = loadingText;
+      } else {
+        button.textContent = button.dataset.defaultText;
+      }
+    };
+
+    const setLoginError = (message = '') => {
+      if (!errorField) return;
+      errorField.textContent = message;
+      errorField.style.visibility = message ? 'visible' : 'hidden';
+    };
 
     const showLoginStep = (step) => {
       numberStep?.classList.toggle('is-active', step === 'number');
@@ -132,7 +174,11 @@
         input.value = '';
       });
       currentPhoneDisplay = '+91 XXXXXXXX';
+      currentPhoneDigits = '';
       if (otpTarget) otpTarget.textContent = currentPhoneDisplay;
+      setLoginError('');
+      setButtonLoading(sendButton, false);
+      setButtonLoading(verifyButton, false);
       showLoginStep('number');
     };
 
@@ -158,6 +204,7 @@
     };
 
     const startOtpFlow = (phoneDigits) => {
+      currentPhoneDigits = phoneDigits;
       currentPhoneDisplay = `+91 ${phoneDigits}`;
       if (otpTarget) otpTarget.textContent = currentPhoneDisplay;
       showLoginStep('otp');
@@ -208,15 +255,25 @@
         }
       });
 
-      sendButton.addEventListener('click', () => {
+      sendButton.addEventListener('click', async () => {
         const digits = sanitizeDigits(phoneInput.value);
         if (digits.length < 10) {
           phoneInput.focus();
           phoneInput.classList.add('is-error');
+          setLoginError('Please enter a valid 10 digit mobile number.');
           return;
         }
         phoneInput.classList.remove('is-error');
-        startOtpFlow(digits.slice(-10));
+        setLoginError('');
+        setButtonLoading(sendButton, true, 'Sending…');
+        try {
+          await requestOtpApi('/api/send-otp', { phone: digits.slice(-10) });
+          startOtpFlow(digits.slice(-10));
+        } catch (error) {
+          setLoginError(error.message);
+        } finally {
+          setButtonLoading(sendButton, false);
+        }
       });
     }
 
@@ -235,19 +292,45 @@
       });
     });
 
-    resendButton?.addEventListener('click', () => {
-      if (resendButton.disabled) return;
-      startOtpTimer();
+    resendButton?.addEventListener('click', async () => {
+      if (resendButton.disabled || !currentPhoneDigits) return;
+      setLoginError('');
+      resendButton.disabled = true;
+      resendButton.setAttribute('disabled', 'true');
+      try {
+        await requestOtpApi('/api/send-otp', { phone: currentPhoneDigits });
+        startOtpTimer();
+      } catch (error) {
+        setLoginError(error.message);
+        stopOtpTimer();
+        resendButton.disabled = false;
+        resendButton.removeAttribute('disabled');
+      }
     });
 
-    verifyButton?.addEventListener('click', () => {
+    verifyButton?.addEventListener('click', async () => {
       const code = collectOtp();
       if (code.length < otpInputs.length) {
         otpInputs[0]?.focus();
+        setLoginError('Please enter the complete OTP.');
         return;
       }
-      console.log(`Verifying OTP ${code} for ${currentPhoneDisplay}`);
-      setLoginState(false);
+      if (!currentPhoneDigits) {
+        showLoginStep('number');
+        setLoginError('Please enter your mobile number first.');
+        return;
+      }
+      setLoginError('');
+      setButtonLoading(verifyButton, true, 'Verifying…');
+      try {
+        await requestOtpApi('/api/verify-otp', { phone: currentPhoneDigits, otp: code });
+        setLoginState(false);
+        alert('OTP verified successfully!');
+      } catch (error) {
+        setLoginError(error.message);
+      } finally {
+        setButtonLoading(verifyButton, false);
+      }
     });
   }
 

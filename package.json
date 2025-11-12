@@ -1,0 +1,28 @@
+{
+  "name": "infinium_website_hair_clinic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "node server/index.js",
+    "dev": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic/issues"
+  },
+  "homepage": "https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  }
+}

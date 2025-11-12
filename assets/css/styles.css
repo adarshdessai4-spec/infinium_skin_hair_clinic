@@ -1379,6 +1379,14 @@ img {
   text-decoration: none;
 }
 
+.login-modal__error {
+  min-height: 1.2rem;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #c62828;
+  visibility: hidden;
+}
+
 .money-back {
   background: #f3f4f7;
   padding: 4rem 0 5rem;
