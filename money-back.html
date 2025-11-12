@@ -70,7 +70,7 @@
         </div>
         <div class="menu-overlay__body">
           <section class="menu-overlay__section">
-            <p class="menu-overlay__eyebrow">What We Do</p>
+            <p class="menu-overlay__eyebrow"><strong>What We Do</strong></p>
             <p class="menu-overlay__intro">
               We help you take control of your hair loss journey with personalised, science-backed care.
             </p>
@@ -81,9 +81,57 @@
               <a href="combos.html">Infinium Combos</a>
               <a href="referral.html">Referral</a>
               <button type="button" data-login-trigger>Log In</button>
-              <button type="button">Products &rsaquo;</button>
+              <button type="button" data-products-trigger>Products &rsaquo;</button>
             </div>
           </section>
+          <div class="products-panel" id="productsPanel" aria-hidden="true">
+            <div class="products-panel__media" aria-hidden="true">
+              <img src="assets/images/regimen-supplements.jpg" alt="" />
+            </div>
+            <div class="products-panel__body">
+              <button type="button" class="products-panel__back" data-products-close>
+                &larr; Products
+              </button>
+              <div class="products-panel__columns">
+                <div>
+                  <h4>Hair Care</h4>
+                  <ul>
+                    <li><a href="#">Hair Ras</a></li>
+                    <li><a href="#">Hair Vitamin</a></li>
+                    <li><a href="#">Health Tatva</a></li>
+                    <li><a href="#">Defence Shampoo</a></li>
+                    <li><a href="#">Defence Conditioner</a></li>
+                    <li><a href="#">Anti Dandruff Lotion</a></li>
+                    <li><a href="#">Cholest Vati</a></li>
+                    <li><a href="#">Calm Ras</a></li>
+                    <li><a href="#">Consti Clear</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Gut &amp; Wellness</h4>
+                  <ul>
+                    <li><a href="#">Gut Shuddhi</a></li>
+                    <li><a href="#">Nasal Drops</a></li>
+                    <li><a href="#">Hair Actives Serum</a></li>
+                    <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                    <li><a href="#">Digest Boost</a></li>
+                    <li><a href="#">Mom Santulan</a></li>
+                    <li><a href="#">Iron Santulan</a></li>
+                    <li><a href="#">Thyro Santulan</a></li>
+                    <li><a href="#">Her Santulan</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Scalp Oils</h4>
+                  <ul>
+                    <li><a href="#">Scalp Oil</a></li>
+                    <li><a href="#">Nourish Hair Oil</a></li>
+                    <li><a href="#">Hair Vitamin For Her</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
           <section class="menu-overlay__section menu-overlay__section--links">
             <div>
               <p class="menu-overlay__label">How We Do It</p>
@@ -129,6 +177,16 @@
           </label>
           <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
           <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <div class="login-socials">
+            <button type="button" class="login-social login-social--google">
+              <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Google</span>
+            </button>
+            <button type="button" class="login-social login-social--apple">
+              <img src="assets/images/apple-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Apple</span>
+            </button>
+          </div>
         </div>
 
         <div class="login-step" data-login-step="otp">

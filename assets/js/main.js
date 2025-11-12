@@ -334,6 +334,27 @@
     });
   }
 
+  const productsPanel = document.getElementById('productsPanel');
+  const productTriggers = document.querySelectorAll('[data-products-trigger]');
+  if (productsPanel && productTriggers.length) {
+    const productCloseButtons = productsPanel.querySelectorAll('[data-products-close]');
+    const setProductsState = (open) => {
+      productsPanel.classList.toggle('is-open', open);
+      productsPanel.setAttribute('aria-hidden', (!open).toString());
+    };
+
+    productTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        setProductsState(true);
+      });
+    });
+
+    productCloseButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setProductsState(false));
+    });
+  }
+
   const eligibilityTrigger = document.querySelector('[data-eligibility-trigger]');
   const eligibilityModal = document.getElementById('eligibilityModal');
 
