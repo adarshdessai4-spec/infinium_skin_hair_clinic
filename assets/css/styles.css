@@ -109,6 +109,8 @@ img {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .nav-dropdown {
@@ -190,6 +192,27 @@ img {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-cta--compact {
+  padding: 0.65rem 1.35rem;
+  font-size: 0.85rem;
+}
+
+.nav-cta--outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.nav-cta--outline:hover,
+.nav-cta--outline:focus {
+  border-color: #fff;
 }
 
 .nav-icon {
@@ -245,11 +268,12 @@ img {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: linear-gradient(110deg, rgba(243, 245, 248, 0.98) 55%, rgba(255, 255, 255, 0.95));
+  background: linear-gradient(150deg, #d6dce6 0%, #f5f7fb 65%);
+  padding: clamp(1.5rem, 6vw, 4rem);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: clamp(1rem, 4vw, 3rem);
+  align-items: flex-start;
+  overflow-y: auto;
   transform: translateY(-100%);
   transition: transform 0.45s ease, opacity 0.45s ease;
   opacity: 0;
@@ -269,143 +293,144 @@ img {
   right: clamp(1rem, 3vw, 2rem);
   background: transparent;
   border: none;
-  font-size: 2rem;
+  font-size: 2.25rem;
   cursor: pointer;
   color: var(--dark);
 }
 
-.menu-overlay__grid {
-  width: 100%;
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: minmax(320px, 1.15fr) minmax(320px, 0.85fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: stretch;
-}
-
-.menu-overlay__visual {
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.menu-overlay__visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: 460px;
-}
-
-.menu-overlay__body {
+.menu-overlay__panel {
+  width: min(960px, 100%);
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.75rem;
+  color: #1f2433;
 }
 
-.menu-overlay__section {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 28px;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+.menu-overlay__brand {
+  margin-bottom: 0.25rem;
 }
 
-.menu-overlay__section--links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  background: transparent;
-  box-shadow: none;
+.menu-overlay__logo {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.menu-overlay__group {
   padding: 0;
 }
 
-.menu-overlay__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.85rem;
+.menu-overlay__heading {
   margin: 0 0 0.75rem;
-}
-
-.menu-overlay__intro {
-  font-size: 1rem;
-  margin: 0;
-  max-width: 420px;
-}
-
-.menu-overlay__actions {
-  margin-top: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.menu-overlay__actions button,
-.menu-overlay__actions a {
-  border: 1px solid rgba(33, 33, 33, 0.6);
-  background: transparent;
-  border-radius: 999px;
-  padding: 0.65rem 1.5rem;
-  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  width: fit-content;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: inherit;
+  letter-spacing: 0.25em;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.menu-overlay__actions button:hover,
-.menu-overlay__actions a:hover,
-.menu-overlay__actions a:focus {
-  background: #111;
-  color: #fff;
+.menu-overlay__copy {
+  margin: 0 0 1rem;
+  max-width: 520px;
+  color: #4c5261;
 }
 
-.menu-overlay__label {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.8rem;
-  margin: 0 0 0.6rem;
+.menu-overlay__list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
 }
 
-.menu-overlay__section--links ul {
+.menu-overlay__list {
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.menu-overlay__section--links li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
+.menu-overlay__list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.menu-overlay__section--links a {
+.menu-overlay__list--single {
+  max-width: 320px;
+}
+
+.menu-overlay__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.65rem 0;
   text-decoration: none;
   color: inherit;
   font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.menu-overlay__link:hover,
+.menu-overlay__link:focus {
+  color: #111;
+}
+
+.menu-overlay__link--button {
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-overlay__chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: auto;
+}
+
+.menu-overlay__grid {
+  width: 100%;
+}
+
+.menu-overlay__grid--secondary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
 }
 
 .menu-overlay__social {
   display: flex;
   gap: 0.75rem;
-  margin-top: 0.25rem;
 }
 
 .menu-overlay__social a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-decoration: none;
   color: inherit;
+}
+
+.menu-overlay__apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.menu-overlay__app-badge {
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .hero-content {
@@ -1527,6 +1552,14 @@ img {
   box-shadow: 0 12px 24px rgba(155, 190, 43, 0.3);
 }
 
+.login-modal__cta--ghost {
+  margin-top: 0.5rem;
+  background: transparent;
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  color: var(--dark);
+  box-shadow: none;
+}
+
 .login-socials {
   display: flex;
   flex-direction: column;
@@ -1984,6 +2017,44 @@ img {
 .plan-logo {
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.plan-alert {
+  width: min(1200px, 100%);
+  margin: 1rem auto 0;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f8f8f8;
+  color: var(--dark);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.plan-alert.is-visible {
+  display: flex;
+}
+
+.plan-alert--success {
+  background: #e7f7ef;
+  border-color: rgba(34, 91, 50, 0.15);
+  color: #1e512f;
+}
+
+.plan-alert--warning {
+  background: #fff7e5;
+  border-color: rgba(204, 140, 0, 0.25);
+  color: #7a4b00;
+}
+
+.plan-alert strong {
+  font-size: 1rem;
+}
+
+.plan-alert span {
+  font-size: 0.95rem;
 }
 
 .plan-layout {
@@ -2803,16 +2874,12 @@ img {
 }
 
 @media (max-width: 1024px) {
-  .menu-overlay__grid {
+  .menu-overlay {
+    padding: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  .menu-overlay__list-grid {
     grid-template-columns: 1fr;
-  }
-
-  .menu-overlay__visual img {
-    min-height: 320px;
-  }
-
-  .menu-overlay__section {
-    margin-top: 1rem;
   }
 }
 
@@ -2821,17 +2888,21 @@ img {
     padding: 1rem;
   }
 
-  .menu-overlay__section {
-    padding: 1.25rem;
+  .menu-overlay__panel {
+    gap: 1.25rem;
   }
 
-  .menu-overlay__actions button {
-    width: 100%;
+  .menu-overlay__grid--secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-overlay__link {
+    font-size: 0.95rem;
+  }
+
+  .menu-overlay__apps .menu-overlay__app-badge {
+    flex: 1 1 100%;
     text-align: center;
-  }
-
-  .menu-overlay__social {
-    justify-content: flex-start;
   }
 
   .nav__inner {

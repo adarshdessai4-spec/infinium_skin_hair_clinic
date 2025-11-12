@@ -104,6 +104,8 @@
     const verifyButton = loginModal.querySelector('[data-login-action="verify"]');
     const googleButton = loginModal.querySelector('.login-social--google');
     const roleButtons = loginModal.querySelectorAll('[data-login-role]');
+    const adminShortcutButton = loginModal.querySelector('[data-admin-test-login]');
+    const userShortcutButton = loginModal.querySelector('[data-user-test-login]');
 
     const resolveApiBase = () => {
       if (typeof window.__INF_OTP_API_BASE === 'string') {
@@ -122,6 +124,16 @@
     let currentPhoneDisplay = '+91 XXXXXXXX';
     let currentPhoneDigits = '';
     let currentRole = 'user';
+    const syncShortcutVisibility = () => {
+      const isAdmin = currentRole === 'admin';
+      if (adminShortcutButton) {
+        adminShortcutButton.hidden = !isAdmin;
+      }
+      if (userShortcutButton) {
+        userShortcutButton.hidden = isAdmin;
+      }
+    };
+    syncShortcutVisibility();
     const createSessionPayload = (context = {}) => ({
       role: context.role || currentRole,
       name: context.name || context.email || context.phone || 'Infinium Member',
@@ -300,6 +312,7 @@
         roleButtons.forEach((b) => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         currentRole = btn.dataset.loginRole || 'user';
+        syncShortcutVisibility();
       });
     });
 
@@ -324,15 +337,48 @@
 
     window.addEventListener('message', handleGoogleMessage);
 
-    if (sendButton) {
+    adminShortcutButton?.addEventListener('click', () => {
+      setLoginError('');
+      handleLoginSuccess({
+        role: 'admin',
+        name: 'Admin Preview',
+        provider: 'direct',
+      });
+    });
+
+    userShortcutButton?.addEventListener('click', () => {
+      setLoginError('');
+      handleLoginSuccess({
+        role: 'user',
+        name: 'Infinium Member',
+        provider: 'direct',
+      });
+    });
+
+    if (sendButton && phoneInput) {
+      const normalizePhoneInput = () => {
+        const digitsOnly = sanitizeDigits(phoneInput.value).slice(0, 10);
+        if (phoneInput.value !== digitsOnly) {
+          phoneInput.value = digitsOnly;
+        }
+        if (digitsOnly.length === 10) {
+          phoneInput.classList.remove('is-error');
+        }
+      };
+
       phoneInput.addEventListener('input', () => {
+        normalizePhoneInput();
         if (phoneInput.value.trim().length) {
           phoneInput.classList.remove('is-error');
         }
       });
+      normalizePhoneInput();
 
       sendButton.addEventListener('click', async () => {
-        const digits = sanitizeDigits(phoneInput.value);
+        const digits = sanitizeDigits(phoneInput.value).slice(0, 10);
+        if (phoneInput.value !== digits) {
+          phoneInput.value = digits;
+        }
         if (digits.length < 10) {
           phoneInput.focus();
           phoneInput.classList.add('is-error');

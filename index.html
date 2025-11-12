@@ -37,6 +37,16 @@
               </li>
             </ul>
           </div>
+          <button class="nav-cta nav-cta--compact" type="button" data-login-trigger>Log In</button>
+          <a
+            class="nav-cta nav-cta--outline nav-cta--compact"
+            href="https://wa.me/917621871654?text=I%20want%20to%20become%20a%20franchise%20partner"
+            target="_blank"
+            rel="noopener"
+            aria-label="Chat with Infinium team to become a franchise partner"
+          >
+            Become a Franchise Partner
+          </a>
           <a
             class="nav-icon nav-icon--whatsapp"
             href="https://wa.me/917621871654"
@@ -64,98 +74,122 @@
 
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
       <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
-      <div class="menu-overlay__grid">
-        <div class="menu-overlay__visual" aria-hidden="true">
-          <img src="assets/images/menu-overlay-lifestyle.jpg" alt="" />
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
         </div>
-        <div class="menu-overlay__body">
-          <section class="menu-overlay__section">
-            <p class="menu-overlay__eyebrow"><strong>What We Do</strong></p>
-            <p class="menu-overlay__intro">
-              We help you take control of your hair loss journey with personalised, science-backed care.
-            </p>
-            <div class="menu-overlay__actions">
-              <button type="button">My Plan</button>
-              <a href="hair-test.html">Hair Test ™</a>
-              <a href="money-back.html">Money Back Guarantee</a>
-              <a href="combos.html">Infinium Combos</a>
-              <a href="referral.html">Referral</a>
-              <button type="button" data-login-trigger>Log In</button>
-              <button type="button" data-products-trigger>Products &rsaquo;</button>
-            </div>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="#">My Plan</a></li>
+              <li><a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a></li>
+              <li><a class="menu-overlay__link" href="referral.html">Referral</a></li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="hair-test.html">Hair Test ™</a></li>
+              <li><a class="menu-overlay__link" href="combos.html">Infinium Combos</a></li>
+              <li>
+                <button type="button" class="menu-overlay__link menu-overlay__link--button" data-login-trigger>
+                  Log In
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="menu-overlay__link menu-overlay__link--button"
+                  data-products-trigger
+                  aria-haspopup="true"
+                  aria-controls="productsPanel"
+                >
+                  <span>Products</span>
+                  <span class="menu-overlay__chevron" aria-hidden="true"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="#">Infinium Science</a></li>
+              <li><a class="menu-overlay__link" href="#">Ingredients</a></li>
+              <li><a class="menu-overlay__link" href="#">Reviews</a></li>
+              <li><a class="menu-overlay__link" href="#">Hero's Page</a></li>
+            </ul>
           </section>
-          <section class="menu-overlay__section menu-overlay__section--links">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="#">About Us</a></li>
+              <li><a class="menu-overlay__link" href="#">Blog</a></li>
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        <section class="menu-overlay__group menu-overlay__group--apps">
+          <p class="menu-overlay__heading">Experience The Infinium App</p>
+          <div class="menu-overlay__apps">
+            <span class="menu-overlay__app-badge">Get it on Google Play</span>
+            <span class="menu-overlay__app-badge">Download on the App Store</span>
+          </div>
+        </section>
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button type="button" class="products-panel__back" data-products-close>
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
             <div>
-              <p class="menu-overlay__label">How We Do It</p>
+              <h4>Hair Care</h4>
               <ul>
-                <li><a href="#">Infinium Science</a></li>
-                <li><a href="#">Ingredients</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Hero's Page</a></li>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
               </ul>
             </div>
             <div>
-              <p class="menu-overlay__label">Who We Are</p>
+              <h4>Gut &amp; Wellness</h4>
               <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
               </ul>
             </div>
             <div>
-              <p class="menu-overlay__label">Get In Touch</p>
-              <div class="menu-overlay__social">
-                <a href="#" aria-label="Instagram">IG</a>
-                <a href="#" aria-label="Facebook">FB</a>
-                <a href="#" aria-label="WhatsApp">WA</a>
-              </div>
-            </div>
-          </section>
-          <div class="products-panel" id="productsPanel" aria-hidden="true">
-            <div class="products-panel__media" aria-hidden="true">
-              <img src="assets/images/regimen-supplements.jpg" alt="" />
-            </div>
-            <div class="products-panel__body">
-              <button type="button" class="products-panel__back" data-products-close>
-                &larr; Products
-              </button>
-              <div class="products-panel__columns">
-                <div>
-                  <h4>Hair Care</h4>
-                  <ul>
-                    <li><a href="#">Hair Ras</a></li>
-                    <li><a href="#">Hair Vitamin</a></li>
-                    <li><a href="#">Health Tatva</a></li>
-                    <li><a href="#">Defence Shampoo</a></li>
-                    <li><a href="#">Defence Conditioner</a></li>
-                    <li><a href="#">Anti Dandruff Lotion</a></li>
-                    <li><a href="#">Cholest Vati</a></li>
-                    <li><a href="#">Calm Ras</a></li>
-                    <li><a href="#">Consti Clear</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Gut &amp; Wellness</h4>
-                  <ul>
-                    <li><a href="#">Gut Shuddhi</a></li>
-                    <li><a href="#">Nasal Drops</a></li>
-                    <li><a href="#">Hair Actives Serum</a></li>
-                    <li><a href="#">Anti-Dandruff Shampoo</a></li>
-                    <li><a href="#">Digest Boost</a></li>
-                    <li><a href="#">Mom Santulan</a></li>
-                    <li><a href="#">Iron Santulan</a></li>
-                    <li><a href="#">Thyro Santulan</a></li>
-                    <li><a href="#">Her Santulan</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Scalp Oils</h4>
-                  <ul>
-                    <li><a href="#">Scalp Oil</a></li>
-                    <li><a href="#">Nourish Hair Oil</a></li>
-                    <li><a href="#">Hair Vitamin For Her</a></li>
-                  </ul>
-                </div>
-              </div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -177,10 +211,23 @@
           <p class="login-modal__label">Enter your mobile number</p>
           <label class="login-modal__input" for="loginMobile">
             <span>+91</span>
-            <input id="loginMobile" type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="Enter mobile number" />
+            <input
+              id="loginMobile"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              placeholder="Enter mobile number"
+            />
           </label>
           <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
           <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
+            Direct Admin Login (Test)
+          </button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
+            Direct User Login (Test)
+          </button>
           <div class="login-socials">
             <button type="button" class="login-social login-social--google">
               <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />

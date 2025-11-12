@@ -21,6 +21,11 @@
       </div>
     </header>
 
+    <div class="plan-alert" data-plan-alert hidden aria-live="polite">
+      <strong data-plan-alert-title>Payment confirmed.</strong>
+      <span data-plan-alert-body>We have received your payment.</span>
+    </div>
+
     <main class="plan-layout">
       <section class="plan-left">
         <article class="plan-card assessment-card">
@@ -141,7 +146,7 @@
             <span>Total</span>
             <strong data-plan-total>₹ 2,420</strong>
           </div>
-          <button type="button" class="primary-cta">Buy Now</button>
+          <button type="button" class="primary-cta" data-plan-buy>Buy Now</button>
         </article>
       </aside>
     </main>
@@ -151,11 +156,70 @@
         const nameEl = document.querySelector('[data-plan-name]');
         const stageEl = document.querySelector('[data-plan-stage]');
         const avatarEl = document.querySelector('[data-plan-avatar]');
+        const buyButton = document.querySelector('[data-plan-buy]');
+        const kitItems = document.querySelectorAll('.kit-list li');
+        const totalEl = document.querySelector('[data-plan-total]');
+        const alertEl = document.querySelector('[data-plan-alert]');
+        const alertTitleEl = document.querySelector('[data-plan-alert-title]');
+        const alertBodyEl = document.querySelector('[data-plan-alert-body]');
+        let userContext = null;
+
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return 'http://localhost:4000';
+          }
+          return '';
+        };
+
+        const API_BASE = resolveApiBase();
+
+        const showPlanAlert = (title, body, tone = 'success') => {
+          if (!alertEl) return;
+          alertEl.classList.remove('plan-alert--success', 'plan-alert--warning');
+          if (tone === 'success') {
+            alertEl.classList.add('plan-alert--success');
+          } else if (tone === 'warning') {
+            alertEl.classList.add('plan-alert--warning');
+          }
+          if (alertTitleEl && title) {
+            alertTitleEl.textContent = title;
+          }
+          if (alertBodyEl && body) {
+            alertBodyEl.textContent = body;
+          }
+          alertEl.hidden = false;
+          alertEl.classList.add('is-visible');
+        };
+
+        const maybeShowPaymentDemo = () => {
+          try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('status') === 'paid') {
+              showPlanAlert(
+                'Payment confirmed',
+                'Thank you! Your Infinium coach will finalize your kit shortly.',
+                'success'
+              );
+              params.delete('status');
+              const newQuery = params.toString();
+              const newUrl = `${window.location.pathname}${newQuery ? `?${newQuery}` : ''}${
+                window.location.hash || ''
+              }`;
+              window.history.replaceState({}, '', newUrl);
+            }
+          } catch (_) {
+            /* ignore */
+          }
+        };
 
         try {
           const ctxRaw = localStorage.getItem('infiniumUserContext');
           if (ctxRaw) {
             const ctx = JSON.parse(ctxRaw);
+            userContext = ctx;
             if (ctx.name && nameEl) nameEl.textContent = ctx.name;
             if (ctx.stage && stageEl) stageEl.textContent = ctx.stage;
             if (ctx.avatar && avatarEl) avatarEl.src = ctx.avatar;
@@ -163,6 +227,128 @@
         } catch (_) {
           /* ignore */
         }
+
+        maybeShowPaymentDemo();
+
+        const setButtonLoading = (isLoading) => {
+          if (!buyButton) return;
+          buyButton.disabled = isLoading;
+          buyButton.textContent = isLoading ? 'Processing…' : 'Buy Now';
+        };
+
+        const sanitizeCurrency = (value) => {
+          if (!value) return null;
+          const cleaned = value.toString().replace(/[^0-9.]/g, '');
+          if (!cleaned) return null;
+          const parsed = parseFloat(cleaned);
+          if (Number.isNaN(parsed)) return null;
+          return parsed;
+        };
+
+        const formatKitLine = (item) => {
+          const lineTitle = item.querySelector('p')?.textContent?.trim();
+          const lineDesc = item.querySelector('span')?.textContent?.trim();
+          const linePrice = item.querySelector('strong')?.textContent?.trim();
+          const summary = [lineTitle, lineDesc].filter(Boolean).join(' - ');
+          return `${summary}${linePrice ? ` (${linePrice})` : ''}`.trim();
+        };
+
+        const collectPlanSummary = () =>
+          Array.from(kitItems || [])
+            .map((item) => formatKitLine(item))
+            .filter(Boolean);
+
+        const buildSuccessRedirect = () => {
+          try {
+            if (window.location.origin && window.location.origin !== 'null') {
+              return `${window.location.origin}/recommended-plan.html?status=paid`;
+            }
+          } catch (_) {
+            /* ignore */
+          }
+          return undefined;
+        };
+
+        const fallbackToWhatsapp = (planSummary, totalAmount) => {
+          showPlanAlert(
+            'Need help completing payment?',
+            'We could not generate a payment link automatically. A coach will assist you on WhatsApp.',
+            'warning'
+          );
+          const customerName = nameEl?.textContent?.trim();
+          const customerStage = stageEl?.textContent?.trim();
+
+          const messageChunks = [
+            'Hi Infinium team, I am ready to buy my recommended plan.',
+            customerName ? `Name: ${customerName}` : '',
+            customerStage ? `Stage: ${customerStage}` : '',
+            planSummary?.length ? ['Kit Items:', planSummary.map((line) => `- ${line}`).join('\n')].join('\n') : '',
+            totalAmount ? `Total: ${totalAmount}` : '',
+          ].filter(Boolean);
+
+          const waMessage = encodeURIComponent(messageChunks.join('\n\n'));
+          const waUrl = `https://wa.me/917621871654?text=${waMessage}`;
+          const popup = window.open(waUrl, '_blank', 'noopener,noreferrer');
+          if (!popup) {
+            window.location.href = waUrl;
+          }
+        };
+
+        const requestPaymentLink = async (payload) => {
+          const endpoint = API_BASE ? `${API_BASE}/api/payments/plan-link` : '/api/payments/plan-link';
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(data?.message || 'Failed to create payment link');
+          }
+          return data?.shortUrl || data?.paymentUrl;
+        };
+
+        buyButton?.addEventListener('click', async () => {
+          const totalLabel = totalEl?.textContent?.trim();
+          const totalValue = sanitizeCurrency(totalLabel);
+          if (!totalValue) {
+            alert('Unable to determine the total price. Please refresh the page and try again.');
+            return;
+          }
+          const planSummary = collectPlanSummary();
+
+          setButtonLoading(true);
+          try {
+            const paymentUrl = await requestPaymentLink({
+              totalAmount: totalValue,
+              customer: {
+                name: nameEl?.textContent?.trim(),
+                stage: stageEl?.textContent?.trim(),
+                contact: userContext?.phone,
+                email: userContext?.email,
+              },
+              items: planSummary,
+              successRedirect: buildSuccessRedirect(),
+            });
+
+            if (!paymentUrl) {
+              throw new Error('Payment link was not returned by the server.');
+            }
+
+            const popup = window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+            if (!popup) {
+              window.location.href = paymentUrl;
+            }
+          } catch (error) {
+            console.error('Payment link error', error);
+            alert('Unable to start the payment link automatically. Redirecting you to WhatsApp for assistance.');
+            fallbackToWhatsapp(planSummary, totalLabel);
+          } finally {
+            setButtonLoading(false);
+          }
+        });
       })();
     </script>
   </body>

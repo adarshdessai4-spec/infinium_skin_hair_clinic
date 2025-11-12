@@ -10,13 +10,16 @@ Static marketing site with supporting OTP login flow powered by MSG91.
   - New standalone pages: `money-back.html` (policy + eligibility modal) and `combos.html` (custom plan showcase).
 - **Hamburger overlay actions**
   - “Hair Test ™”, “Money Back Guarantee”, “Infinium Combos”, and “Log In” all route to real screens now.
-- **Login with OTP / Google**
+- **Login with OTP / Google / Role aware**
   - Modal supports two steps (phone entry → OTP entry) with resend countdown, inline errors, and focus management.
-  - Google button now launches the OAuth popup and closes the modal when the user grants access.
-  - Role toggle (User/Admin) dictates where the user lands post login.
-- **User/Admin portals**
-  - User dashboard mirrors the live design hero and launches shortcuts; data hydrates from `/api/user/dashboard`.
-  - Admin console shows stats, tables, and activity feed sourced from `/api/admin/*`.
+  - Google button launches the OAuth popup (Apple button is in place for future integration).
+  - Role toggle (User/Admin) dictates the destination portal and stores the user context in `localStorage`.
+- **User experience pages**
+  - `user-portal.html` mirrors the production hero, “Your Root Causes” module, journey timeline, and shortcut tiles.
+  - “Talk to your Hair Coach” opens `coach-call.html` (WhatsApp CTA, book call button, reschedule modal).
+  - “My Recommended Plan” opens `recommended-plan.html` (assessment report, kit list, add-ons, total).
+- **Admin portal**
+  - `admin-portal.html` shows KPIs, user table, and recent activity, all hydrated from `/api/admin/stats`.
 - **Backend**
   - Express app is modularised (`server/src/...`) with dedicated routes/controllers.
   - MSG91 OTP + Google OAuth helper endpoints live in the auth module.
@@ -74,6 +77,8 @@ npx serve .
 | `GOOGLE_CLIENT_SECRET` | Google OAuth client secret |
 | `GOOGLE_REDIRECT_URI` | Google OAuth redirect (default `http://localhost:4000/api/auth/google/callback`) |
 | `DATABASE_URL` | Postgres connection string used by Prisma |
+| `RAZORPAY_KEY_ID` | Razorpay key ID for generating checkout links |
+| `RAZORPAY_KEY_SECRET` | Razorpay key secret used to sign API requests |
 
 ### API surface (current)
 
@@ -86,6 +91,9 @@ npx serve .
 | `GET`  | `/api/user/dashboard` | Return hydrated user dashboard data |
 | `GET`  | `/api/admin/stats` | Admin KPI cards + activity feed |
 | `GET`  | `/api/admin/users` | Latest users for the admin table |
+| `GET`  | `/coach-call.html` | Frontend-only coach call experience |
+| `GET`  | `/recommended-plan.html` | Frontend-only assessment report |
+| `POST` | `/api/payments/plan-link` | Create a Razorpay payment link for the recommended plan |
 
 ### Deployment reminders
 
@@ -93,3 +101,4 @@ npx serve .
 - Keep MSG91 + Google secrets server-side only. The frontend never needs the auth key or client secret.
 - Update `DATABASE_URL` and rerun `prisma migrate deploy` in production so the schema stays current.
 - For Google login, update the redirect URI in Google Cloud when you deploy to a different domain.
+- Wire `coach-call.html` and `recommended-plan.html` to real backend data once booking/assessment APIs are ready.
