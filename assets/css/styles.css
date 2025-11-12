@@ -1444,10 +1444,12 @@ img {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.55);
+  padding: 1.5rem 1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
   z-index: 120;
+  overflow-y: auto;
 }
 
 .login-modal.is-open {
@@ -1471,6 +1473,8 @@ img {
   flex-direction: column;
   gap: 0.9rem;
   text-align: center;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
 }
 
 .login-step {
@@ -2878,30 +2882,42 @@ img {
     padding: clamp(1rem, 5vw, 2.5rem);
   }
 
-  .menu-overlay__list-grid {
-    grid-template-columns: 1fr;
+  .menu-overlay__panel {
+    gap: 1.5rem;
+  }
+
+  .menu-overlay__list-grid,
+  .menu-overlay__grid--secondary {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .menu-overlay {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
   .menu-overlay__panel {
     gap: 1.25rem;
+    width: min(560px, 100%);
   }
 
+  .menu-overlay__list-grid,
   .menu-overlay__grid--secondary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 1rem;
   }
 
   .menu-overlay__link {
-    font-size: 0.95rem;
+    font-size: 1rem;
+  }
+
+  .menu-overlay__apps {
+    gap: 0.5rem;
   }
 
   .menu-overlay__apps .menu-overlay__app-badge {
-    flex: 1 1 100%;
+    flex: 1 1 calc(50% - 0.5rem);
     text-align: center;
   }
 
@@ -2939,6 +2955,13 @@ img {
 
   .nav-right > .nav-icon {
     flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .menu-overlay__list-grid,
+  .menu-overlay__grid--secondary {
+    grid-template-columns: 1fr;
   }
 }
 
