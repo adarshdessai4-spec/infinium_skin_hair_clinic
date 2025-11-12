@@ -102,16 +102,39 @@
     const resendButton = loginModal.querySelector('[data-login-resend]');
     const countdownLabel = loginModal.querySelector('[data-login-countdown]');
     const verifyButton = loginModal.querySelector('[data-login-action="verify"]');
+    const googleButton = loginModal.querySelector('.login-social--google');
+    const roleButtons = loginModal.querySelectorAll('[data-login-role]');
 
-    const OTP_API_BASE = window.__INF_OTP_API_BASE || '';
+    const resolveApiBase = () => {
+      if (typeof window.__INF_OTP_API_BASE === 'string') {
+        return window.__INF_OTP_API_BASE;
+      }
+      if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+        return 'http://localhost:4000';
+      }
+      return '';
+    };
+
+    const OTP_API_BASE = resolveApiBase();
     const OTP_SECONDS = 60;
     let otpTimerId = null;
     let currentCountdown = OTP_SECONDS;
     let currentPhoneDisplay = '+91 XXXXXXXX';
     let currentPhoneDigits = '';
+    let currentRole = 'user';
+    const createSessionPayload = (context = {}) => ({
+      role: context.role || currentRole,
+      name: context.name || context.email || context.phone || 'Infinium Member',
+      email: context.email,
+      phone: context.phone,
+      avatar: context.avatar,
+      provider: context.provider || 'otp',
+      loggedInAt: new Date().toISOString(),
+    });
 
     const requestOtpApi = async (path, payload) => {
-      const response = await fetch(`${OTP_API_BASE}${path}`, {
+      const url = OTP_API_BASE ? `${OTP_API_BASE}${path}` : path;
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -216,6 +239,30 @@
 
     const collectOtp = () => Array.from(otpInputs).reduce((acc, input) => acc + input.value, '');
 
+    const destinationForRole = (roleOverride) => {
+      const role = roleOverride || currentRole;
+      return role === 'admin' ? 'admin-portal.html' : 'user-portal.html';
+    };
+
+    const handleLoginSuccess = (context = {}) => {
+      const payload = createSessionPayload(context);
+      try {
+        localStorage.setItem('infiniumUserContext', JSON.stringify(payload));
+      } catch (_) {
+        /* ignore */
+      }
+      setLoginState(false);
+      window.location.href = destinationForRole(payload.role);
+    };
+
+    let googlePopup = null;
+    const closeGooglePopup = () => {
+      if (googlePopup && !googlePopup.closed) {
+        googlePopup.close();
+      }
+      googlePopup = null;
+    };
+
     const setLoginState = (open) => {
       resetLoginFlow();
       loginModal.classList.toggle('is-open', open);
@@ -247,6 +294,35 @@
         setLoginState(false);
       }
     });
+
+    roleButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        roleButtons.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        currentRole = btn.dataset.loginRole || 'user';
+      });
+    });
+
+    const handleGoogleMessage = (event) => {
+      const data = event.data;
+      if (!data || data.source !== 'infinium-google-auth') {
+        return;
+      }
+      closeGooglePopup();
+      if (data.error) {
+        setLoginError(data.error);
+        return;
+      }
+      setLoginError('');
+      handleLoginSuccess({
+        name: data.user?.name,
+        email: data.user?.email,
+        avatar: data.user?.picture,
+        provider: 'google',
+      });
+    };
+
+    window.addEventListener('message', handleGoogleMessage);
 
     if (sendButton) {
       phoneInput.addEventListener('input', () => {
@@ -324,14 +400,43 @@
       setButtonLoading(verifyButton, true, 'Verifying…');
       try {
         await requestOtpApi('/api/verify-otp', { phone: currentPhoneDigits, otp: code });
-        setLoginState(false);
-        alert('OTP verified successfully!');
+        const phoneLabel = currentPhoneDigits ? `+91 ${currentPhoneDigits}` : null;
+        handleLoginSuccess({
+          phone: phoneLabel || undefined,
+          name: phoneLabel || undefined,
+          provider: 'otp',
+        });
       } catch (error) {
         setLoginError(error.message);
       } finally {
         setButtonLoading(verifyButton, false);
       }
     });
+
+    if (googleButton) {
+      googleButton.addEventListener('click', async () => {
+        try {
+          setLoginError('');
+          const url = OTP_API_BASE ? `${OTP_API_BASE}/api/auth/google/url` : '/api/auth/google/url';
+          const response = await fetch(url);
+          const contentType = response.headers.get('content-type') || '';
+          const data = contentType.includes('application/json') ? await response.json() : {};
+          if (!response.ok || !data?.url) {
+            throw new Error(data?.message || 'Unable to start Google login.');
+          }
+          googlePopup = window.open(
+            data.url,
+            'infinium-google-login',
+            'width=520,height=600'
+          );
+          if (!googlePopup) {
+            throw new Error('Please allow popups to continue with Google login.');
+          }
+        } catch (error) {
+          setLoginError(error.message);
+        }
+      });
+    }
   }
 
   const productsPanel = document.getElementById('productsPanel');

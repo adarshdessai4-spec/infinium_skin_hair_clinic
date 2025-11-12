@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Portal | Infinium Hair & Skin Care Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="portal-body portal-body--user">
+    <header class="portal-hero">
+      <div class="portal-hero__content">
+        <div class="portal-logo">Infinium</div>
+        <div class="portal-hero__welcome">
+          <p>Hi, <span data-portal-name>Anjali</span></p>
+          <h2 data-portal-stage>Stage 3 | Active Plan</h2>
+        </div>
+        <div class="portal-hero__nav">
+          <button type="button" class="portal-pill" onclick="location.href='recommended-plan.html'">
+            My Recommended Plan
+          </button>
+          <button type="button" class="portal-icon" onclick="location.href='index.html'">⟲</button>
+          <button type="button" class="portal-icon">☰</button>
+        </div>
+      </div>
+      <div class="portal-hero__illustration">
+        <img src="assets/images/hero-couple.jpg" alt="Care team" data-portal-avatar />
+      </div>
+    </header>
+
+    <section class="portal-launcher">
+      <button type="button" onclick="location.href='coach-call.html'">
+        <span data-launcher-coach>Talk to your Hair Coach</span>
+      </button>
+      <button type="button">
+        <span data-launcher-diet>My Diet Plan</span>
+      </button>
+      <button type="button">
+        <span data-launcher-prescription>My Prescription</span>
+      </button>
+      <button type="button">
+        <span data-launcher-refill>Buy Again</span>
+      </button>
+    </section>
+    <section class="portal-root">
+      <h2>Your Root Causes</h2>
+      <div class="root-grid">
+        <article>
+          <p>Genetics</p>
+        </article>
+        <article>
+          <p>Lifestyle</p>
+        </article>
+        <article>
+          <p>Stress</p>
+        </article>
+        <article>
+          <p>Nutrition</p>
+        </article>
+      </div>
+      <div class="root-summary">
+        <h3>Will Infinium work for me?</h3>
+        <p>
+          Absolutely, results depend on your hair loss stage and age.<br />As per your test, you will take
+          <strong>5 months</strong> to see visible results.
+        </p>
+        <div class="root-timeline">
+          <article>
+            <h4>Month 1-2</h4>
+            <p>Treat internal root causes behind your hair fall.</p>
+          </article>
+          <article>
+            <h4>Month 3-4</h4>
+            <p>Reduce hair fall and improve follicle health.</p>
+          </article>
+          <article>
+            <h4>Month 5-6</h4>
+            <p>Grow new and healthy set of baby hair.</p>
+          </article>
+        </div>
+        <button type="button" class="portal-pill" style="margin-top: 1rem">My Recommended Plan</button>
+      </div>
+    </section>
+    <script>
+      (function () {
+        const nameEl = document.querySelector('[data-portal-name]');
+        const stageEl = document.querySelector('[data-portal-stage]');
+        const avatarEl = document.querySelector('[data-portal-avatar]');
+        const coachEl = document.querySelector('[data-launcher-coach]');
+
+        const loadStoredContext = () => {
+          try {
+            const raw = localStorage.getItem('infiniumUserContext');
+            if (!raw) return {};
+            return JSON.parse(raw);
+          } catch (error) {
+            return {};
+          }
+        };
+
+        const hydrateFromContext = (context = {}) => {
+          if (context.name && nameEl) {
+            nameEl.textContent = context.name;
+          }
+          if (context.stage && stageEl) {
+            stageEl.textContent = context.stage;
+          }
+          if (context.avatar && avatarEl) {
+            avatarEl.src = context.avatar;
+          }
+          if (context.coach && coachEl) {
+            coachEl.textContent = `Talk to ${context.coach}`;
+          }
+        };
+
+        hydrateFromContext(loadStoredContext());
+
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return 'http://localhost:4000';
+          }
+          return '';
+        };
+
+        const base = resolveApiBase();
+        fetch(`${base}/api/user/dashboard`)
+          .then((res) => res.json())
+          .then((data) => {
+            const context = {
+              name: data.profile?.name,
+              stage: data.profile?.stage ? `${data.profile.stage} | Active Plan` : undefined,
+              avatar: data.profile?.avatarUrl,
+              coach: data.profile?.coach,
+            };
+            hydrateFromContext(context);
+          })
+          .catch(() => {
+            /* use defaults */
+          });
+      })();
+    </script>
+  </body>
+</html>
