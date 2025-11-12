@@ -26,6 +26,8 @@ body {
   background: #f4f4f4;
   color: var(--dark);
   line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body.menu-open {
@@ -50,18 +52,18 @@ img {
 .hero {
   background: linear-gradient(120deg, var(--hero-green-start), var(--hero-green-end));
   padding: 2.5rem 0 4rem;
-  min-height: 85vh;
+  min-height: 80vh;
   position: relative;
   overflow: hidden;
 }
 
 .nav {
-  padding: 0.75rem 0;
+  padding: 0.85rem env(safe-area-inset-right, 0) 0.85rem env(safe-area-inset-left, 0);
   background: var(--nav-bg);
   color: #fff;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -367,7 +369,7 @@ img {
 }
 
 .hero-text h1 {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-size: clamp(2rem, 4vw, 3.6rem);
   margin: 1rem 0;
 }
 
@@ -534,7 +536,7 @@ img {
   gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  padding-bottom: 0.5rem;
+  padding: 0 1rem 0.5rem;
 }
 
 .stories-track::-webkit-scrollbar {
@@ -584,6 +586,8 @@ img {
 .video-card video {
   margin-top: 0.75rem;
   width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 14px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
@@ -767,6 +771,10 @@ img {
 .section-heading {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
 }
 
 .journey {
@@ -1115,25 +1123,25 @@ img {
 }
 
 @media (max-width: 768px) {
-  .nav {
-    padding: 1rem 0;
-  }
-
   .nav__inner {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
   }
 
   .nav-right {
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
   }
 
   .nav-cta {
-    flex: 1 1 100%;
-    margin-bottom: 0.5rem;
+    flex: 0 0 auto;
+    margin-bottom: 0;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.85rem;
   }
 
   .hero {
