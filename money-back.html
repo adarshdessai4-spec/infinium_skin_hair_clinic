@@ -78,8 +78,8 @@
               <button type="button">My Plan</button>
               <a href="hair-test.html">Hair Test ™</a>
               <a href="money-back.html">Money Back Guarantee</a>
-              <button type="button">Infinium Combos</button>
-              <button type="button">Log In</button>
+              <a href="combos.html">Infinium Combos</a>
+              <button type="button" data-login-trigger>Log In</button>
               <button type="button">Referral</button>
               <button type="button">Products &rsaquo;</button>
             </div>
@@ -110,6 +110,45 @@
               </div>
             </div>
           </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="login-modal__overlay" data-login-close></div>
+      <div class="login-modal__content" data-login-content>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+        <h2>Login with OTP</h2>
+        <span class="login-modal__divider" aria-hidden="true"></span>
+
+        <div class="login-step is-active" data-login-step="number">
+          <p class="login-modal__label">Enter your mobile number</p>
+          <label class="login-modal__input" for="loginMobile">
+            <span>+91</span>
+            <input id="loginMobile" type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="Enter mobile number" />
+          </label>
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="otp">
+          <p class="login-modal__label">Enter OTP</p>
+          <div class="otp-inputs" data-otp-inputs>
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+          </div>
+          <p class="login-modal__help">
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
+          </p>
+          <p class="login-modal__resend">
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
+          </p>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Login</button>
         </div>
       </div>
     </div>

@@ -86,6 +86,171 @@
     });
   }
 
+  const loginTriggers = document.querySelectorAll('[data-login-trigger]');
+  const loginModal = document.getElementById('loginModal');
+  if (loginModal && loginTriggers.length) {
+    const closeButtons = loginModal.querySelectorAll('[data-login-close]');
+    const overlay = loginModal.querySelector('.login-modal__overlay');
+    let lastLoginTrigger = null;
+    const numberStep = loginModal.querySelector('[data-login-step="number"]');
+    const otpStep = loginModal.querySelector('[data-login-step="otp"]');
+    const phoneInput = loginModal.querySelector('#loginMobile');
+    const sendButton = loginModal.querySelector('[data-login-action="send"]');
+    const otpInputs = loginModal.querySelectorAll('[data-otp-input]');
+    const otpTarget = loginModal.querySelector('[data-otp-target]');
+    const resendButton = loginModal.querySelector('[data-login-resend]');
+    const countdownLabel = loginModal.querySelector('[data-login-countdown]');
+    const verifyButton = loginModal.querySelector('[data-login-action="verify"]');
+
+    const OTP_SECONDS = 60;
+    let otpTimerId = null;
+    let currentCountdown = OTP_SECONDS;
+    let currentPhoneDisplay = '+91 XXXXXXXX';
+
+    const showLoginStep = (step) => {
+      numberStep?.classList.toggle('is-active', step === 'number');
+      otpStep?.classList.toggle('is-active', step === 'otp');
+    };
+
+    const stopOtpTimer = () => {
+      if (otpTimerId) {
+        clearInterval(otpTimerId);
+        otpTimerId = null;
+      }
+    };
+
+    const resetLoginFlow = () => {
+      stopOtpTimer();
+      currentCountdown = OTP_SECONDS;
+      if (resendButton) {
+        resendButton.disabled = true;
+        resendButton.setAttribute('disabled', 'true');
+      }
+      if (countdownLabel) countdownLabel.textContent = OTP_SECONDS.toString();
+      phoneInput.value = '';
+      otpInputs.forEach((input) => {
+        input.value = '';
+      });
+      currentPhoneDisplay = '+91 XXXXXXXX';
+      if (otpTarget) otpTarget.textContent = currentPhoneDisplay;
+      showLoginStep('number');
+    };
+
+    const startOtpTimer = () => {
+      stopOtpTimer();
+      currentCountdown = OTP_SECONDS;
+      if (countdownLabel) countdownLabel.textContent = currentCountdown.toString();
+      if (resendButton) {
+        resendButton.disabled = true;
+        resendButton.setAttribute('disabled', 'true');
+      }
+      otpTimerId = setInterval(() => {
+        currentCountdown -= 1;
+        if (countdownLabel) countdownLabel.textContent = Math.max(currentCountdown, 0).toString();
+        if (currentCountdown <= 0) {
+          stopOtpTimer();
+          if (resendButton) {
+            resendButton.disabled = false;
+            resendButton.removeAttribute('disabled');
+          }
+        }
+      }, 1000);
+    };
+
+    const startOtpFlow = (phoneDigits) => {
+      currentPhoneDisplay = `+91 ${phoneDigits}`;
+      if (otpTarget) otpTarget.textContent = currentPhoneDisplay;
+      showLoginStep('otp');
+      otpInputs[0]?.focus();
+      startOtpTimer();
+    };
+
+    const sanitizeDigits = (value) => value.replace(/\D/g, '');
+
+    const collectOtp = () => Array.from(otpInputs).reduce((acc, input) => acc + input.value, '');
+
+    const setLoginState = (open) => {
+      resetLoginFlow();
+      loginModal.classList.toggle('is-open', open);
+      loginModal.setAttribute('aria-hidden', (!open).toString());
+      document.body.classList.toggle('modal-open', open);
+      if (open) {
+        phoneInput.focus();
+      } else {
+        lastLoginTrigger?.focus();
+      }
+    };
+
+    loginTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        lastLoginTrigger = trigger;
+        setLoginState(true);
+      });
+    });
+
+    closeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setLoginState(false));
+    });
+
+    overlay?.addEventListener('click', () => setLoginState(false));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && loginModal.classList.contains('is-open')) {
+        setLoginState(false);
+      }
+    });
+
+    if (sendButton) {
+      phoneInput.addEventListener('input', () => {
+        if (phoneInput.value.trim().length) {
+          phoneInput.classList.remove('is-error');
+        }
+      });
+
+      sendButton.addEventListener('click', () => {
+        const digits = sanitizeDigits(phoneInput.value);
+        if (digits.length < 10) {
+          phoneInput.focus();
+          phoneInput.classList.add('is-error');
+          return;
+        }
+        phoneInput.classList.remove('is-error');
+        startOtpFlow(digits.slice(-10));
+      });
+    }
+
+    otpInputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        input.value = sanitizeDigits(input.value).slice(0, 1);
+        if (input.value && index < otpInputs.length - 1) {
+          otpInputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'Backspace' && !input.value && index > 0) {
+          otpInputs[index - 1].focus();
+        }
+      });
+    });
+
+    resendButton?.addEventListener('click', () => {
+      if (resendButton.disabled) return;
+      startOtpTimer();
+    });
+
+    verifyButton?.addEventListener('click', () => {
+      const code = collectOtp();
+      if (code.length < otpInputs.length) {
+        otpInputs[0]?.focus();
+        return;
+      }
+      console.log(`Verifying OTP ${code} for ${currentPhoneDisplay}`);
+      setLoginState(false);
+    });
+  }
+
   const eligibilityTrigger = document.querySelector('[data-eligibility-trigger]');
   const eligibilityModal = document.getElementById('eligibilityModal');
 

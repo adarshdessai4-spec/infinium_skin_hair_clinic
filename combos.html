@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Combos | Custom Hair Plans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="combos-body">
+    <nav class="nav">
+      <div class="nav__inner">
+        <div class="logo">Infinium Hair & Skin Care Clinic</div>
+        <div class="nav-right">
+          <div class="nav-dropdown">
+            <button
+              class="nav-cta nav-cta--dropdown"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="navTestMenu"
+            >
+              Take A Test
+              <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="nav-dropdown__menu" id="navTestMenu" role="menu">
+              <li role="presentation">
+                <button type="button" role="menuitem" data-link="hair-test.html">Hair Test ™</button>
+              </li>
+              <li role="presentation">
+                <button type="button" role="menuitem" data-link="#">Skin Test</button>
+              </li>
+            </ul>
+          </div>
+          <a
+            class="nav-icon nav-icon--whatsapp"
+            href="https://wa.me/917621871654"
+            target="_blank"
+            rel="noopener"
+            aria-label="Chat on WhatsApp at +91 7621 871 654"
+          >
+            <img src="assets/images/icon-whatsapp.svg" alt="" aria-hidden="true" />
+            <span class="visually-hidden">Chat on WhatsApp</span>
+          </a>
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
+      <div class="menu-overlay__grid">
+        <div class="menu-overlay__visual" aria-hidden="true">
+          <img src="assets/images/menu-overlay-lifestyle.jpg" alt="" />
+        </div>
+        <div class="menu-overlay__body">
+          <section class="menu-overlay__section">
+            <p class="menu-overlay__eyebrow">What We Do</p>
+            <p class="menu-overlay__intro">
+              We help you take control of your hair loss journey with personalised, science-backed care.
+            </p>
+            <div class="menu-overlay__actions">
+              <button type="button">My Plan</button>
+              <a href="hair-test.html">Hair Test ™</a>
+              <a href="money-back.html">Money Back Guarantee</a>
+              <a href="combos.html">Infinium Combos</a>
+              <button type="button" data-login-trigger>Log In</button>
+              <button type="button">Referral</button>
+              <button type="button">Products &rsaquo;</button>
+            </div>
+          </section>
+          <section class="menu-overlay__section menu-overlay__section--links">
+            <div>
+              <p class="menu-overlay__label">How We Do It</p>
+              <ul>
+                <li><a href="#">Infinium Science</a></li>
+                <li><a href="#">Ingredients</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Hero's Page</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="menu-overlay__label">Who We Are</p>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="menu-overlay__label">Get In Touch</p>
+              <div class="menu-overlay__social">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="WhatsApp">WA</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="login-modal__overlay" data-login-close></div>
+      <div class="login-modal__content" data-login-content>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+        <h2>Login with OTP</h2>
+        <span class="login-modal__divider" aria-hidden="true"></span>
+
+        <div class="login-step is-active" data-login-step="number">
+          <p class="login-modal__label">Enter your mobile number</p>
+          <label class="login-modal__input" for="loginMobile">
+            <span>+91</span>
+            <input id="loginMobile" type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="Enter mobile number" />
+          </label>
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="otp">
+          <p class="login-modal__label">Enter OTP</p>
+          <div class="otp-inputs" data-otp-inputs>
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+          </div>
+          <p class="login-modal__help">
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
+          </p>
+          <p class="login-modal__resend">
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
+          </p>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Login</button>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section class="combos-hero section">
+        <div class="container">
+          <div class="combos-tags">
+            <button type="button" class="combos-tag is-active">Hair</button>
+            <button type="button" class="combos-tag">Dandruff</button>
+            <button type="button" class="combos-tag">Gut</button>
+            <button type="button" class="combos-tag">Stress</button>
+            <button type="button" class="combos-tag">Hormone</button>
+            <button type="button" class="combos-tag">Thyroid</button>
+          </div>
+
+          <div class="combos-hero__body">
+            <div class="combos-hero__text">
+              <p class="combos-eyebrow">Infinium Combos</p>
+              <h1>One product can't save your hair</h1>
+              <p class="combos-hero__sub">Get on Infinium's custom plan built by dermatologists and nutritionists.</p>
+              <a class="primary-cta" href="hair-test.html">Take The Hair Test ™</a>
+            </div>
+            <div class="combos-hero__visual">
+              <img src="assets/images/regimen-supplements.jpg" alt="Infinium custom plan products" />
+            </div>
+          </div>
+
+          <div class="combos-toggle">
+            <button type="button" class="combo-toggle is-active">Single</button>
+            <button type="button" class="combo-toggle">Kit</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="combos-plans section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Our Customised Plans</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="combos-plans__grid">
+            <article class="combo-card">
+              <img src="assets/images/product-herbs.jpg" alt="Holistic Hair Plan" />
+              <span class="combo-card__tag">Hair + Nutrition</span>
+              <h3>Holistic Hair Plan</h3>
+              <p>Daily herbs and vitamins paired with scalp care to target thinning from the inside out.</p>
+              <ul>
+                <li>Hair Ras Ayurvedic herbs</li>
+                <li>Biotin + DHT blockers</li>
+                <li>Infinium scalp tonic</li>
+              </ul>
+              <div class="combo-card__footer">
+                <div>
+                  <p class="combo-card__price">₹ 2,999</p>
+                  <small>30-day starter pack</small>
+                </div>
+                <a class="primary-cta" href="hair-test.html">Start Plan</a>
+              </div>
+            </article>
+            <article class="combo-card">
+              <img src="assets/images/product-shampoo.jpg" alt="Clarifying Combo" />
+              <span class="combo-card__tag">Dandruff Control</span>
+              <h3>Clarifying Combo</h3>
+              <p>Powerful anti-fungal shampoo with soothing scalp oil for stubborn dandruff and itch.</p>
+              <ul>
+                <li>Anti-dandruff shampoo</li>
+                <li>Tea tree scalp oil</li>
+                <li>Weekly detox mask</li>
+              </ul>
+              <div class="combo-card__footer">
+                <div>
+                  <p class="combo-card__price">₹ 1,499</p>
+                  <small>Best for oily scalps</small>
+                </div>
+                <a class="primary-cta" href="hair-test.html">Get This Combo</a>
+              </div>
+            </article>
+            <article class="combo-card">
+              <img src="assets/images/regimen-supplements.jpg" alt="Advanced Growth Kit" />
+              <span class="combo-card__tag">Advanced Kit</span>
+              <h3>Advanced Growth Kit</h3>
+              <p>Clinically proven actives, growth boosters, and lifestyle tracking for aggressive hair fall.</p>
+              <ul>
+                <li>Minoxidil + peptide serum</li>
+                <li>Hair growth supplements</li>
+                <li>Dedicated hair coach</li>
+              </ul>
+              <div class="combo-card__footer">
+                <div>
+                  <p class="combo-card__price">₹ 4,499</p>
+                  <small>Includes coaching</small>
+                </div>
+                <a class="primary-cta" href="hair-test.html">Build My Plan</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div>
+            <h4>Infinium Hair & Skin Care Clinic Journey</h4>
+            <ul>
+              <li>FAQ</li>
+              <li>My Plan</li>
+              <li>Online Examination</li>
+              <li>Referral</li>
+              <li>Customer Stories</li>
+              <li>Reviews</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>Science</li>
+              <li>Our Story</li>
+              <li>Blog</li>
+              <li>All Products</li>
+              <li>Hair Solutions for Women</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li>Money Back Guarantee</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Return Policy</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Centres</h4>
+            <ul>
+              <li>Pune</li>
+              <li>Nagpur</li>
+              <li>Thane</li>
+              <li>Navi Mumbai</li>
+              <li>Hyderabad</li>
+            </ul>
+          </div>
+          <div class="footer-app">
+            <h4>Experience The Infinium Hair & Skin Care Clinic App</h4>
+            <div class="app-badges">
+              <span>Get it on Google Play</span>
+              <span>Download on the App Store</span>
+            </div>
+            <p>Registered Copyright 2025</p>
+            <p>
+              Tatvartha Health Pvt. Ltd.<br />
+              Unit no - 101, B wing, Building - 16, Interface, Off Link Road, Malad (West), Mumbai - 400064.
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social">
+            <span>Catch us on:</span>
+            <div class="social-links">
+              <span>Instagram</span>
+              <span>LinkedIn</span>
+              <span>Facebook</span>
+              <span>YouTube</span>
+            </div>
+          </div>
+          <div class="footer-logo">Infinium Hair & Skin Care Clinic.</div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
