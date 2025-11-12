@@ -495,4 +495,302 @@
       }
     });
   }
+
+  const combosRoot = document.querySelector('.combos-body');
+  if (combosRoot) {
+    const plansGrid = combosRoot.querySelector('.combos-plans__grid');
+    const tagButtons = combosRoot.querySelectorAll('.combos-tag');
+    if (!plansGrid || !tagButtons.length) {
+      return;
+    }
+
+    const comboPlans = {
+      hair: [
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'Holistic Hair Plan',
+          tag: 'Hair + Nutrition',
+          title: 'Holistic Hair Plan',
+          description: 'Daily herbs and vitamins paired with scalp care to target thinning from the inside out.',
+          features: ['Hair Ras Ayurvedic herbs', 'Biotin + DHT blockers', 'Infinium scalp tonic'],
+          price: '₹ 2,999',
+          priceNote: '30-day starter pack',
+          cta: 'Start Plan',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Advanced Growth Kit',
+          tag: 'Advanced Kit',
+          title: 'Advanced Growth Kit',
+          description: 'Clinically proven actives, growth boosters, and lifestyle tracking for aggressive hair fall.',
+          features: ['Minoxidil + peptide serum', 'Hair growth supplements', 'Dedicated hair coach'],
+          price: '₹ 4,499',
+          priceNote: 'Includes coaching',
+          cta: 'Build My Plan',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/threefold-supplement.jpg',
+          imageAlt: 'Strength & Shine Set',
+          tag: 'Repair + Protect',
+          title: 'Strength & Shine Set',
+          description: 'A three-step ritual to strengthen the shaft, seal in moisture, and protect against styling.',
+          features: ['Bond repair mist', 'Strengthening conditioner', 'Daily shine serum'],
+          price: '₹ 1,999',
+          priceNote: 'Ships in 48 hours',
+          cta: 'Strengthen Hair',
+          href: 'hair-test.html',
+        },
+      ],
+      dandruff: [
+        {
+          image: 'assets/images/product-shampoo.jpg',
+          imageAlt: 'Clarifying Combo',
+          tag: 'Dandruff Control',
+          title: 'Clarifying Combo',
+          description: 'Powerful anti-fungal shampoo with soothing scalp oil for stubborn dandruff and itch.',
+          features: ['Anti-dandruff shampoo', 'Tea tree scalp oil', 'Weekly detox mask'],
+          price: '₹ 1,499',
+          priceNote: 'Best for oily scalps',
+          cta: 'Get This Combo',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Scalp Recovery Duo',
+          tag: 'Repair Routine',
+          title: 'Scalp Recovery Duo',
+          description: 'Rebalances the microbiome while calming redness so flakes do not resurface.',
+          features: ['Prebiotic scalp mist', 'Cooling aloe serum', 'Menthol scalp brush'],
+          price: '₹ 1,799',
+          priceNote: 'Derm-approved actives',
+          cta: 'Calm My Scalp',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'Sebum Reset Routine',
+          tag: 'Oil + Flake',
+          title: 'Sebum Reset Routine',
+          description: 'Targets excess oil production so your scalp stays fresh for 48 hours straight.',
+          features: ['Clay pre-wash mask', 'Probiotic cleanser', 'Clarifying tonic'],
+          price: '₹ 1,650',
+          priceNote: 'Includes scalp brush',
+          cta: 'Reset Now',
+          href: 'hair-test.html',
+        },
+      ],
+      gut: [
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'Gut Reset Stack',
+          tag: 'Detox + Nourish',
+          title: 'Gut Reset Stack',
+          description: 'Cleanses Ama toxins, improves absorption, and fuels follicles with better nutrition.',
+          features: ['Consti Clear herbs', 'Digest Boost tablets', 'Caffeine-free detox tea'],
+          price: '₹ 2,299',
+          priceNote: '14-day reset plan',
+          cta: 'Reset Gut',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Digest & Glow Kit',
+          tag: 'Daily Ritual',
+          title: 'Digest & Glow Kit',
+          description: 'Supports gut lining, reduces bloating, and keeps nutrients flowing to the scalp.',
+          features: ['Collagen peptides', 'Glutamine shot', 'Probiotic duo'],
+          price: '₹ 2,899',
+          priceNote: 'Ships with shaker',
+          cta: 'Fuel My Gut',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/threefold-supplement.jpg',
+          imageAlt: 'Detox & Nourish Program',
+          tag: 'Coach Guided',
+          title: 'Detox & Nourish Program',
+          description: 'A guided elimination plan plus mindful eating prompts to calm gut inflammation.',
+          features: ['Coach check-ins', 'Recipe playbook', 'Weekly progress tracking'],
+          price: '₹ 3,499',
+          priceNote: '4-week journey',
+          cta: 'Start Program',
+          href: 'hair-test.html',
+        },
+      ],
+      stress: [
+        {
+          image: 'assets/images/threefold-supplement.jpg',
+          imageAlt: 'Adaptive Calm Stack',
+          tag: 'Mind + Hair',
+          title: 'Adaptive Calm Stack',
+          description: 'Adaptogens, magnesium, and breath cues to reduce cortisol-driven hair fall.',
+          features: ['Ashwagandha complex', 'Magnesium glycinate', 'Guided breath audio'],
+          price: '₹ 1,899',
+          priceNote: 'Monthly supply',
+          cta: 'Lower Stress',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Sleep + Growth Kit',
+          tag: 'Night Ritual',
+          title: 'Sleep + Growth Kit',
+          description: 'Improves deep sleep so your body can repair follicles throughout the night.',
+          features: ['Melatonin-free drops', 'Scalp massage oil', 'Bedtime routine cards'],
+          price: '₹ 2,150',
+          priceNote: 'Ships with satin cap',
+          cta: 'Upgrade Sleep',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'Nervous System Support',
+          tag: 'Calm Circuit',
+          title: 'Nervous System Support',
+          description: 'Targets nervous system fatigue with B vitamins and grounding rituals.',
+          features: ['B-complex sachets', 'Copper tongue cleaner', 'AM intention journal'],
+          price: '₹ 1,750',
+          priceNote: '21-day sprint',
+          cta: 'Find Balance',
+          href: 'hair-test.html',
+        },
+      ],
+      hormone: [
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Hormone Harmony Plan',
+          tag: 'Root Cause',
+          title: 'Hormone Harmony Plan',
+          description: 'Balances insulin spikes, supports liver detox, and keeps shedding in check.',
+          features: ['Shatavari blends', 'Spearmint tea', 'Blood sugar tracker'],
+          price: '₹ 2,799',
+          priceNote: 'PCOS-friendly',
+          cta: 'Balance Hormones',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'PCOS Balance Combo',
+          tag: "Women's Health",
+          title: 'PCOS Balance Combo',
+          description: 'Inositol powered drink plus anti-androgen serum for androgenic hair fall.',
+          features: ['Inositol drink mix', 'Anti-androgen drops', 'Cycle sync calendar'],
+          price: '₹ 3,099',
+          priceNote: 'Doctor curated',
+          cta: 'Start Balance',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/threefold-supplement.jpg',
+          imageAlt: 'Endocrine Support Set',
+          tag: 'Inner Calm',
+          title: 'Endocrine Support Set',
+          description: 'Supports adrenals, balances estrogen dominance, and keeps inflammation low.',
+          features: ['Seed cycling kit', 'Omega complex', 'Inflammation journal'],
+          price: '₹ 3,450',
+          priceNote: 'Includes coach chat',
+          cta: 'Support Endocrine',
+          href: 'hair-test.html',
+        },
+      ],
+      thyroid: [
+        {
+          image: 'assets/images/product-herbs.jpg',
+          imageAlt: 'Thyroid Balance Kit',
+          tag: 'Metabolic Care',
+          title: 'Thyroid Balance Kit',
+          description: 'Boosts metabolism, manages shedding, and stabilises energy dips daily.',
+          features: ['Thyro Santulan', 'Iodine-safe drops', 'Energy breathwork'],
+          price: '₹ 2,599',
+          priceNote: 'Pairs with TSH meds',
+          cta: 'Support Thyroid',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/regimen-supplements.jpg',
+          imageAlt: 'Energy + Growth Stack',
+          tag: 'Daily Sustain',
+          title: 'Energy + Growth Stack',
+          description: 'Protein + adaptogen smoothie blend to rebuild strands despite slow thyroid.',
+          features: ['Vegan protein', 'Moringa mix', 'Digital recipe cards'],
+          price: '₹ 2,849',
+          priceNote: '15 servings',
+          cta: 'Fuel Energy',
+          href: 'hair-test.html',
+        },
+        {
+          image: 'assets/images/threefold-supplement.jpg',
+          imageAlt: 'Auto-immune Friendly Plan',
+          tag: 'Holistic',
+          title: 'Auto-immune Friendly Plan',
+          description: "Designed for Hashimoto's with anti-inflammatory herbs and guided routines.",
+          features: ['Gluten-free kit', 'Inflammation labs tracker', 'Coach check-ins'],
+          price: '₹ 3,299',
+          priceNote: '6-week roadmap',
+          cta: 'Start Healing',
+          href: 'hair-test.html',
+        },
+      ],
+    };
+
+    const renderPlans = (categoryKey) => {
+      const plans = comboPlans[categoryKey] || comboPlans.hair;
+      plansGrid.innerHTML = '';
+      const fragment = document.createDocumentFragment();
+
+      plans.forEach((plan) => {
+        const article = document.createElement('article');
+        article.className = 'combo-card';
+        article.innerHTML = `
+          <img src="${plan.image}" alt="${plan.imageAlt}" />
+          <span class="combo-card__tag">${plan.tag}</span>
+          <h3>${plan.title}</h3>
+          <p>${plan.description}</p>
+          <ul>
+            ${plan.features.map((feature) => `<li>${feature}</li>`).join('')}
+          </ul>
+          <div class="combo-card__footer">
+            <div>
+              <p class="combo-card__price">${plan.price}</p>
+              <small>${plan.priceNote}</small>
+            </div>
+            <a class="primary-cta" href="${plan.href}">${plan.cta}</a>
+          </div>
+        `;
+        fragment.appendChild(article);
+      });
+
+      plansGrid.appendChild(fragment);
+    };
+
+    const setActiveTag = (activeButton) => {
+      tagButtons.forEach((button) => {
+        const isActive = button === activeButton;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive.toString());
+      });
+    };
+
+    const resolveKey = (button) => button?.dataset.comboFilter || (button?.textContent || 'hair').toLowerCase();
+
+    let initialButton = Array.from(tagButtons).find((button) => button.classList.contains('is-active'));
+    if (!initialButton) {
+      initialButton = tagButtons[0];
+    }
+    const initialKey = resolveKey(initialButton);
+    renderPlans(initialKey);
+    setActiveTag(initialButton);
+
+    tagButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('is-active')) {
+          return;
+        }
+        setActiveTag(button);
+        renderPlans(resolveKey(button));
+      });
+    });
+  }
 })();
