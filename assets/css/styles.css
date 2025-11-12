@@ -1123,11 +1123,15 @@ img {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
+  }
+
   .nav__inner {
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.65rem;
     align-items: center;
-    padding: 0 clamp(1rem, 4vw, 1.5rem);
+    padding: 0;
   }
 
   .nav-right {
@@ -1139,18 +1143,18 @@ img {
 
   .nav-cta {
     flex: 0 0 auto;
-    margin-bottom: 0;
     padding: 0.65rem 1.25rem;
     font-size: 0.85rem;
   }
 
   .hero {
     min-height: auto;
-    padding: 2rem 0 3rem;
+    padding: clamp(2rem, 7vw, 3rem) clamp(1rem, 5vw, 2rem) clamp(2.5rem, 8vw, 3.5rem);
   }
 
   .hero-content {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    grid-template-columns: 1fr;
   }
 
   .hero-text {
@@ -1164,6 +1168,7 @@ img {
   .hero-visual {
     order: -1;
     justify-self: center;
+    width: min(420px, 90vw);
   }
 
   .review-card {
