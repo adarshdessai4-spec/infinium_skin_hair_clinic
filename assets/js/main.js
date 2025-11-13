@@ -82,6 +82,31 @@
     }
   }
 
+  const franchiseMarqueeLink = document.querySelector('[data-franchise-link]');
+  if (franchiseMarqueeLink) {
+    const navigateToFranchisePortal = () => {
+      const targetUrl = franchiseMarqueeLink.getAttribute('href') || 'franchise.html';
+      window.location.href = targetUrl;
+    };
+
+    franchiseMarqueeLink.addEventListener('click', (event) => {
+      if (event.defaultPrevented) return;
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+      event.preventDefault();
+      navigateToFranchisePortal();
+    });
+
+    franchiseMarqueeLink.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        navigateToFranchisePortal();
+      }
+    });
+  }
+
   const moneyBackExit = document.querySelector('.money-back__exit');
   if (moneyBackExit) {
     moneyBackExit.addEventListener('click', () => {
