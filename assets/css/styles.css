@@ -255,12 +255,35 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   letter-spacing: 0.08em;
+  position: relative;
 }
 
 .nav-cta--franchise:hover,
 .nav-cta--franchise:focus {
   border-color: #fff;
   background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-cta--franchise::after {
+  content: 'Become our franchise partner';
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 0.7rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-cta--franchise:hover::after,
+.nav-cta--franchise:focus-visible::after {
+  opacity: 1;
 }
 
 .nav-icon--menu {
