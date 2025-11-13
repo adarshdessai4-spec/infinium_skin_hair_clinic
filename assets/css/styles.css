@@ -1447,6 +1447,183 @@ img {
   color: var(--text-muted);
 }
 
+.franchise-body {
+  background: #f1f4f8;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--dark);
+  margin: 0;
+}
+
+.franchise-main {
+  width: min(1200px, 100%);
+  margin: 3rem auto 4rem;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.franchise-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.franchise-pill {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(10, 100, 199, 0.12);
+  color: #0a64c7;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.franchise-hero h1 {
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.franchise-hero__stats {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.franchise-hero__stats li {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.franchise-hero__stats strong {
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+
+.franchise-hero__card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+.franchise-hero__card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.franchise-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.75fr);
+  gap: 2rem;
+}
+
+.franchise-form-card,
+.franchise-info-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.06);
+}
+
+.franchise-form-card h2 {
+  margin: 0;
+}
+
+.franchise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.franchise-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.franchise-form input,
+.franchise-form textarea,
+.franchise-form select {
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.franchise-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.franchise-checkbox input {
+  width: auto;
+  margin: 0;
+}
+
+.franchise-success {
+  margin-top: 1.25rem;
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  background: #e7f7ef;
+  border: 1px solid rgba(34, 91, 50, 0.15);
+  color: #1e512f;
+  display: none;
+}
+
+.franchise-success.is-visible {
+  display: block;
+}
+
+.franchise-info-card ul {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.franchise-contact {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.franchise-contact a {
+  font-weight: 600;
+  color: #0a64c7;
+  text-decoration: none;
+}
+
+@media (max-width: 960px) {
+  .franchise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .franchise-hero__stats {
+    flex-wrap: wrap;
+  }
+}
+
 .login-modal {
   position: fixed;
   inset: 0;

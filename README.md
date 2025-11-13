@@ -7,7 +7,7 @@ Static marketing site with supporting OTP login flow powered by MSG91.
 - **Navigation + visuals**
   - Mobile nav stacks the logo/CTA icons and keeps the hamburger visible.
   - WhatsApp button now uses the green rounded-square icon and opens `wa.me/917621871654`.
-  - New standalone pages: `money-back.html` (policy + eligibility modal) and `combos.html` (custom plan showcase).
+  - New standalone pages: `money-back.html` (policy + eligibility modal), `combos.html` (custom plan showcase), and `franchise.html` (partner application form surfaced via the nav icon).
 - **Hamburger overlay actions**
   - “Hair Test ™”, “Money Back Guarantee”, “Infinium Combos”, and “Log In” all route to real screens now.
 - **Login with OTP / Google / Role aware**
