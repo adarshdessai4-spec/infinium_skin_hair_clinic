@@ -264,8 +264,7 @@ img {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.nav-cta--franchise::after {
-  content: 'Become our franchise partner';
+.nav-cta__tooltip {
   position: absolute;
   bottom: calc(100% + 0.4rem);
   left: 50%;
@@ -279,10 +278,11 @@ img {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
+  z-index: 5;
 }
 
-.nav-cta--franchise:hover::after,
-.nav-cta--franchise:focus-visible::after {
+.nav-cta--franchise:hover .nav-cta__tooltip,
+.nav-cta--franchise:focus-visible .nav-cta__tooltip {
   opacity: 1;
 }
 
