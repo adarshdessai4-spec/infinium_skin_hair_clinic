@@ -11,6 +11,27 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script>
+      (function () {
+        try {
+          const raw = localStorage.getItem('infiniumUserContext');
+          if (!raw) {
+            throw new Error('missing session');
+          }
+          const context = JSON.parse(raw);
+          if (!context?.loggedInAt) {
+            throw new Error('stale session');
+          }
+        } catch (_) {
+          try {
+            sessionStorage.setItem('infiniumPendingDestination', 'hair-test.html');
+          } catch (storageError) {
+            /* ignore */
+          }
+          window.location.replace('index.html?loginRequired=hair-test');
+        }
+      })();
+    </script>
   </head>
   <body class="test-body">
     <header class="test-nav">

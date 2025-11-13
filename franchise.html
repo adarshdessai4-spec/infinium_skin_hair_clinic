@@ -218,7 +218,28 @@
             <button type="button" data-login-resend disabled>Resend</button>
             <span>OTP in <span data-login-countdown>60</span> sec</span>
           </p>
-          <button type="button" class="login-modal__cta" data-login-action="verify">Login</button>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="profile">
+          <div class="login-success" data-login-success>
+            <span class="login-success__icon" aria-hidden="true">✓</span>
+            <div>
+              <h3>OTP verified</h3>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
+            </div>
+          </div>
+          <p class="login-modal__label">Tell us your name</p>
+          <label class="login-modal__input" for="loginName">
+            <input
+              id="loginName"
+              type="text"
+              placeholder="Enter full name"
+              autocomplete="name"
+            />
+          </label>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
         </div>
 
         <p class="login-modal__error" data-login-error role="alert"></p>

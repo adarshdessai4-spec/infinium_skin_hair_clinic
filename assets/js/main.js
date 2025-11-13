@@ -6,6 +6,46 @@
     window.scrollTo(0, 0);
   });
 
+  let pendingDestination = null;
+  let openLoginModal = null;
+  try {
+    const storedRedirect = sessionStorage.getItem('infiniumPendingDestination');
+    if (storedRedirect) {
+      pendingDestination = storedRedirect;
+      sessionStorage.removeItem('infiniumPendingDestination');
+    }
+  } catch (_) {
+    /* storage disabled */
+  }
+
+  const getStoredUserContext = () => {
+    try {
+      const raw = localStorage.getItem('infiniumUserContext');
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const isUserLoggedIn = () => {
+    const context = getStoredUserContext();
+    return Boolean(context?.loggedInAt);
+  };
+
+  const deriveNameFromEmail = (email) => {
+    if (!email || typeof email !== 'string') return '';
+    const localPart = email.split('@')[0] || '';
+    if (!localPart) return '';
+    return localPart
+      .split(/[.\-_]/)
+      .filter(Boolean)
+      .map((chunk) => chunk.charAt(0).toUpperCase() + chunk.slice(1))
+      .join(' ');
+  };
+
+  const loginPromptReason = new URLSearchParams(window.location.search).get('loginRequired');
+
   const overlay = document.getElementById('menuOverlay');
   const menuButton = document.querySelector('.nav-icon--menu');
   const closeButton = document.querySelector('.menu-overlay__close');
@@ -124,9 +164,9 @@
     const closeButtons = loginModal.querySelectorAll('[data-login-close]');
     const overlay = loginModal.querySelector('.login-modal__overlay');
     const errorField = loginModal.querySelector('[data-login-error]');
+    const loginSteps = loginModal.querySelectorAll('[data-login-step]');
     let lastLoginTrigger = null;
-    const numberStep = loginModal.querySelector('[data-login-step="number"]');
-    const otpStep = loginModal.querySelector('[data-login-step="otp"]');
+    let pendingOtpContext = null;
     const phoneInput = loginModal.querySelector('#loginMobile');
     const sendButton = loginModal.querySelector('[data-login-action="send"]');
     const otpInputs = loginModal.querySelectorAll('[data-otp-input]');
@@ -138,6 +178,9 @@
     const roleButtons = loginModal.querySelectorAll('[data-login-role]');
     const adminShortcutButton = loginModal.querySelector('[data-admin-test-login]');
     const userShortcutButton = loginModal.querySelector('[data-user-test-login]');
+    const profileNameInput = loginModal.querySelector('#loginName');
+    const profileCompleteButton = loginModal.querySelector('[data-login-action="complete"]');
+    const profileSuccessPhone = loginModal.querySelector('[data-login-success-phone]');
 
     const resolveApiBase = () => {
       if (typeof window.__INF_OTP_API_BASE === 'string') {
@@ -217,8 +260,10 @@
     };
 
     const showLoginStep = (step) => {
-      numberStep?.classList.toggle('is-active', step === 'number');
-      otpStep?.classList.toggle('is-active', step === 'otp');
+      loginSteps.forEach((stepEl) => {
+        const shouldShow = stepEl.dataset.loginStep === step;
+        stepEl.classList.toggle('is-active', shouldShow);
+      });
     };
 
     const stopOtpTimer = () => {
@@ -231,6 +276,7 @@
     const resetLoginFlow = () => {
       stopOtpTimer();
       currentCountdown = OTP_SECONDS;
+      pendingOtpContext = null;
       if (resendButton) {
         resendButton.disabled = true;
         resendButton.setAttribute('disabled', 'true');
@@ -243,6 +289,13 @@
       currentPhoneDisplay = '+91 XXXXXXXX';
       currentPhoneDigits = '';
       if (otpTarget) otpTarget.textContent = currentPhoneDisplay;
+      if (profileNameInput) {
+        profileNameInput.value = '';
+        profileNameInput.classList.remove('is-error');
+      }
+      if (profileSuccessPhone) {
+        profileSuccessPhone.textContent = currentPhoneDisplay;
+      }
       setLoginError('');
       setButtonLoading(sendButton, false);
       setButtonLoading(verifyButton, false);
@@ -283,20 +336,42 @@
 
     const collectOtp = () => Array.from(otpInputs).reduce((acc, input) => acc + input.value, '');
 
+    const transitionToProfileStep = (phoneLabel) => {
+      pendingOtpContext = {
+        provider: 'otp',
+        phone: phoneLabel || undefined,
+      };
+      if (profileSuccessPhone && phoneLabel) {
+        profileSuccessPhone.textContent = phoneLabel;
+      }
+      showLoginStep('profile');
+      profileNameInput?.focus();
+    };
+
     const destinationForRole = (roleOverride) => {
       const role = roleOverride || currentRole;
       return role === 'admin' ? 'admin-portal.html' : 'user-portal.html';
     };
 
     const handleLoginSuccess = (context = {}) => {
-      const payload = createSessionPayload(context);
+      const payload = createSessionPayload({
+        ...context,
+        name: context.name || deriveNameFromEmail(context.email),
+      });
       try {
         localStorage.setItem('infiniumUserContext', JSON.stringify(payload));
       } catch (_) {
         /* ignore */
       }
       setLoginState(false);
-      window.location.href = destinationForRole(payload.role);
+      const targetDestination = pendingDestination || destinationForRole(payload.role);
+      pendingDestination = null;
+      try {
+        sessionStorage.removeItem('infiniumPendingDestination');
+      } catch (_) {
+        /* ignore */
+      }
+      window.location.href = targetDestination;
     };
 
     let googlePopup = null;
@@ -318,6 +393,8 @@
         lastLoginTrigger?.focus();
       }
     };
+
+    openLoginModal = () => setLoginState(true);
 
     loginTriggers.forEach((trigger) => {
       trigger.addEventListener('click', (event) => {
@@ -479,16 +556,41 @@
       try {
         await requestOtpApi('/api/verify-otp', { phone: currentPhoneDigits, otp: code });
         const phoneLabel = currentPhoneDigits ? `+91 ${currentPhoneDigits}` : null;
-        handleLoginSuccess({
-          phone: phoneLabel || undefined,
-          name: phoneLabel || undefined,
-          provider: 'otp',
-        });
+        transitionToProfileStep(phoneLabel);
       } catch (error) {
         setLoginError(error.message);
       } finally {
         setButtonLoading(verifyButton, false);
       }
+    });
+
+    const submitProfileStep = () => {
+      if (!pendingOtpContext) {
+        showLoginStep('number');
+        return;
+      }
+      const desiredName = profileNameInput?.value.trim();
+      if (!desiredName) {
+        profileNameInput?.classList.add('is-error');
+        profileNameInput?.focus();
+        return;
+      }
+      profileNameInput?.classList.remove('is-error');
+      handleLoginSuccess({
+        ...pendingOtpContext,
+        name: desiredName,
+      });
+      pendingOtpContext = null;
+    };
+
+    profileCompleteButton?.addEventListener('click', submitProfileStep);
+    profileNameInput?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        submitProfileStep();
+      }
+    });
+    profileNameInput?.addEventListener('input', () => {
+      profileNameInput.classList.remove('is-error');
     });
 
     if (googleButton) {
@@ -515,7 +617,43 @@
         }
       });
     }
+
+    if (loginPromptReason && !isUserLoggedIn()) {
+      setLoginState(true);
+      setLoginError('Please log in to continue to your test.');
+    }
   }
+
+  document.addEventListener('click', (event) => {
+    const candidate = event.target.closest('a[href], [data-requires-login]');
+    if (!candidate) return;
+    const href = candidate.getAttribute('href') || candidate.dataset.href;
+    if (!href) return;
+    const requiresAuth =
+      candidate.hasAttribute('data-requires-login') ||
+      /hair-test\.html/i.test(href) ||
+      /skin-test\.html/i.test(href);
+    if (!requiresAuth) {
+      return;
+    }
+    if (isUserLoggedIn()) {
+      return;
+    }
+    event.preventDefault();
+    pendingDestination = href;
+    try {
+      sessionStorage.setItem('infiniumPendingDestination', href);
+    } catch (_) {
+      /* ignore */
+    }
+    if (typeof openLoginModal === 'function') {
+      openLoginModal();
+    } else if (/hair-test\.html/i.test(href)) {
+      window.location.href = 'index.html?loginRequired=hair-test';
+    } else {
+      window.location.href = 'index.html?loginRequired=login';
+    }
+  });
 
   const productsPanel = document.getElementById('productsPanel');
   const productTriggers = document.querySelectorAll('[data-products-trigger]');

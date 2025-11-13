@@ -228,7 +228,28 @@
             <button type="button" data-login-resend disabled>Resend</button>
             <span>OTP in <span data-login-countdown>60</span> sec</span>
           </p>
-          <button type="button" class="login-modal__cta" data-login-action="verify">Login</button>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="profile">
+          <div class="login-success" data-login-success>
+            <span class="login-success__icon" aria-hidden="true">✓</span>
+            <div>
+              <h3>OTP verified</h3>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
+            </div>
+          </div>
+          <p class="login-modal__label">Tell us your name</p>
+          <label class="login-modal__input" for="loginName">
+            <input
+              id="loginName"
+              type="text"
+              placeholder="Enter full name"
+              autocomplete="name"
+            />
+          </label>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
         </div>
 
         <p class="login-modal__error" data-login-error role="alert"></p>
@@ -359,16 +380,54 @@
           </article>
           <div class="diagram-center">
             <div class="center-circle">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <circle cx="60" cy="60" r="50" fill="none" stroke="#cfcfcf" stroke-width="2" />
+              <svg viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+                <rect x="6" y="6" width="208" height="138" rx="18" fill="#fbfbfb" stroke="#dedede" stroke-width="3" />
+                <rect x="20" y="20" width="180" height="110" rx="16" fill="#f6f6f6" stroke="#e3e3e3" stroke-width="2" />
+                <g fill="none" stroke="#d3d3d3" stroke-width="3" stroke-linecap="round">
+                  <path d="M32 40h156" />
+                  <path d="M32 50h156" />
+                  <path d="M32 60h156" />
+                </g>
                 <path
-                  d="M30 70 Q40 30 50 70 Q60 30 70 70 Q80 30 90 70"
-                  fill="none"
-                  stroke="#9e9e9e"
+                  d="M50 40c18-18 103-18 121 0v56c-18 18-103 18-121 0z"
+                  fill="#fdfdfd"
+                  stroke="#cfcfcf"
                   stroke-width="3"
+                />
+                <path
+                  d="M50 82c12-10 18-10 30 0s18 10 30 0 18-10 30 0 18 10 30 0"
+                  fill="none"
+                  stroke="#bdbdbd"
+                  stroke-width="4"
                   stroke-linecap="round"
                 />
-                <path d="M30 80h60" stroke="#cfcfcf" stroke-width="2" />
+                <g fill="none" stroke="#a5a5a5" stroke-width="5" stroke-linecap="round">
+                  <path d="M90 44c-10 26-6 60-3 80" />
+                  <path d="M110 40c-4 28-4 60 0 88" />
+                  <path d="M130 44c10 26 6 60 3 80" />
+                </g>
+                <g fill="#bfbfbf">
+                  <path
+                    d="M110 78c-6 8-8 18 0 30 8-12 6-22 0-30z"
+                  />
+                  <path d="M90 82c-4 6-4 14 0 24 4-10 4-18 0-24z" />
+                  <path d="M130 82c-4 6-4 14 0 24 4-10 4-18 0-24z" />
+                </g>
+                <g fill="none" stroke="#bcbcbc" stroke-width="3" stroke-linecap="round">
+                  <path d="M78 108c6-8 14-8 20 0" />
+                  <path d="M126 118c6-10 16-10 22 0" />
+                </g>
+                <g fill="#c2c2c2">
+                  <circle cx="70" cy="124" r="4" />
+                  <circle cx="88" cy="130" r="4" />
+                  <circle cx="140" cy="128" r="4" />
+                  <circle cx="158" cy="122" r="4" />
+                  <circle cx="110" cy="132" r="4" />
+                </g>
+                <g stroke="#d0d0d0" stroke-width="3" stroke-linecap="round">
+                  <path d="M32 96c12 6 18 6 30 0" />
+                  <path d="M158 96c12 6 18 6 30 0" />
+                </g>
               </svg>
             </div>
             <span class="diagram-line line-nutrition"></span>
