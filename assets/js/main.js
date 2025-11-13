@@ -181,6 +181,18 @@
     const profileNameInput = loginModal.querySelector('#loginName');
     const profileCompleteButton = loginModal.querySelector('[data-login-action="complete"]');
     const profileSuccessPhone = loginModal.querySelector('[data-login-success-phone]');
+    const toggleGoogleLoading = (isLoading) => {
+      if (!googleButton) return;
+      const label = googleButton.querySelector('span');
+      googleButton.classList.toggle('is-loading', isLoading);
+      googleButton.disabled = isLoading;
+      if (label) {
+        if (!label.dataset.defaultText) {
+          label.dataset.defaultText = label.textContent;
+        }
+        label.textContent = isLoading ? 'Connecting…' : label.dataset.defaultText;
+      }
+    };
 
     const resolveApiBase = () => {
       if (typeof window.__INF_OTP_API_BASE === 'string') {
@@ -299,6 +311,7 @@
       setLoginError('');
       setButtonLoading(sendButton, false);
       setButtonLoading(verifyButton, false);
+      toggleGoogleLoading(false);
       showLoginStep('number');
     };
 
@@ -431,6 +444,7 @@
         return;
       }
       closeGooglePopup();
+      toggleGoogleLoading(false);
       if (data.error) {
         setLoginError(data.error);
         return;
@@ -597,6 +611,7 @@
       googleButton.addEventListener('click', async () => {
         try {
           setLoginError('');
+          toggleGoogleLoading(true);
           const url = OTP_API_BASE ? `${OTP_API_BASE}/api/auth/google/url` : '/api/auth/google/url';
           const response = await fetch(url);
           const contentType = response.headers.get('content-type') || '';
@@ -614,6 +629,7 @@
           }
         } catch (error) {
           setLoginError(error.message);
+          toggleGoogleLoading(false);
         }
       });
     }
