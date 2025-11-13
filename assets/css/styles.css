@@ -250,6 +250,16 @@ img {
   box-shadow: 0 10px 25px rgba(19, 160, 75, 0.45);
 }
 
+.nav-icon--partner {
+  background: rgba(10, 100, 199, 0.12);
+  border: none;
+}
+
+.nav-icon--partner img {
+  width: 26px;
+  height: 26px;
+}
+
 .nav-icon--menu {
   flex-direction: column;
   gap: 4px;
