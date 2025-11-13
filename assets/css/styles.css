@@ -250,14 +250,17 @@ img {
   box-shadow: 0 10px 25px rgba(19, 160, 75, 0.45);
 }
 
-.nav-icon--partner {
-  background: rgba(10, 100, 199, 0.12);
-  border: none;
+.nav-cta--franchise {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  letter-spacing: 0.08em;
 }
 
-.nav-icon--partner img {
-  width: 26px;
-  height: 26px;
+.nav-cta--franchise:hover,
+.nav-cta--franchise:focus {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-icon--menu {
