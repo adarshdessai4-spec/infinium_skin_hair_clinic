@@ -1,4 +1,11 @@
 (function () {
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+  });
+
   const overlay = document.getElementById('menuOverlay');
   const menuButton = document.querySelector('.nav-icon--menu');
   const closeButton = document.querySelector('.menu-overlay__close');
