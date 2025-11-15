@@ -8,7 +8,7 @@ const {
   MSG91_OTP_LENGTH = 6,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  GOOGLE_REDIRECT_URI = 'http://localhost:4000/api/auth/google/callback',
+  GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI,
 } = process.env;
 
 if (!MSG91_AUTH_KEY || !MSG91_TEMPLATE_ID) {
@@ -106,6 +106,7 @@ exports.getGoogleAuthUrl = (req, res) => {
 };
 
 exports.handleGoogleCallback = async (req, res) => {
+  console.log('hit google callback', req.query);
   const client = getGoogleClient();
   if (!client) {
     return res.status(500).send('Google login is not configured yet.');

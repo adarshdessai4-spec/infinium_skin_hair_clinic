@@ -316,12 +316,6 @@ img {
   z-index: 90;
 }
 
-/* Thin vertical separators between Franchise / Take Test / Log In */
-.mobile-tab-bar > * + * {
-  border-left: 1px solid rgba(148, 163, 184, 0.8); /* soft grey line */
-}
-
-
 .mobile-tab-bar a,
 .mobile-tab-bar button {
   background: none;
@@ -330,7 +324,6 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.78rem;
-  font-weight: 600;
   color: #0a64c7;
   padding: 0.35rem 0.5rem;
   border-radius: 999px;
@@ -339,26 +332,6 @@ img {
   justify-content: center;
   text-decoration: none;
   min-width: 90px;
-}
-
-/* Thin vertical separators between Franchise / Take Test / Log In */
-.mobile-tab-bar a,
-.mobile-tab-bar button {
-  position: relative;
-}
-
-/* Draw a vertical line before every item that has a previous sibling */
-.mobile-tab-bar a + a::before,
-.mobile-tab-bar a + button::before,
-.mobile-tab-bar button + a::before,
-.mobile-tab-bar button + button::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 25%;
-  bottom: 25%;
-  width: 1px;
-  background: rgba(148, 163, 184, 0.9); /* subtle professional grey */
 }
 
 .mobile-tab-bar button {
@@ -523,12 +496,6 @@ img {
   padding: 0;
   margin: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-/* NEW: remove extra top border for second list
-   so only one line appears between Franchise Partner & Hair Test */
-.menu-overlay__list + .menu-overlay__list {
-  border-top: none;
 }
 
 .menu-overlay__list li {
