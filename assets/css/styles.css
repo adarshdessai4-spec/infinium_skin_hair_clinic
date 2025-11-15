@@ -300,7 +300,7 @@ img {
   display: inline-block;
   white-space: nowrap;
   padding-left: 100%;
-  animation: marquee-slide 12s linear infinite;
+  animation: marquee-slide 40s linear infinite;
 }
 
 .mobile-tab-bar {
@@ -4597,4 +4597,295 @@ img {
     bottom: 3.2rem !important;  /* move it up above FRANCHISE / TAKE TEST / LOG IN */
     right: 1rem !important;
   }
+}
+
+/* Infinium brand stack in hero */
+.hero-brand {
+  margin-bottom: 1rem;
+}
+
+.hero-brand__main {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #0f172a;
+}
+
+.hero-brand__sub {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  max-width: 26rem;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+/* Center on mobile to match existing hero text */
+@media (max-width: 768px) {
+  .hero-brand,
+  .hero-brand__main,
+  .hero-brand__sub {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== HERO BRAND STACK ABOVE EYEBROW ===== */
+.hero-brand {
+  margin-bottom: 1rem;
+}
+
+.hero-brand__main {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #0f172a;
+}
+
+.hero-brand__sub {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  max-width: 30rem;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+@media (max-width: 768px) {
+  .hero-brand,
+  .hero-brand__main,
+  .hero-brand__sub {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== WHY CHOOSE INFINIUM ===== */
+.why-infinium__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.6rem 2rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.why-infinium__list li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.why-infinium__list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* ===== OUR TREATMENTS ===== */
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.treatments-column h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.treatments-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+  font-size: 0.9rem;
+}
+
+.treatments-column li {
+  margin-bottom: 0.25rem;
+}
+
+/* ===== BEFORE & AFTER RESULTS ===== */
+.before-after__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.before-after__card {
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.before-after__card--placeholder {
+  border: 1px dashed rgba(148, 163, 184, 0.9);
+  background: repeating-linear-gradient(
+    -45deg,
+    #f9fafb,
+    #f9fafb 6px,
+    #eef2ff 6px,
+    #eef2ff 12px
+  );
+}
+
+.before-after__card--placeholder span {
+  font-size: 0.85rem;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+/* ===== BRANCHES ===== */
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.branches-grid h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.25rem;
+}
+
+.branches-grid p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+/* ===== DOCTORS ===== */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.doctor-card {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.doctor-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.98rem;
+}
+
+.doctor-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+/* ===== INFINIUM ECOSYSTEM (INSTITUTE / PRODUCTS / FRANCHISE) ===== */
+.verticals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.vertical-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.vertical-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.vertical-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.vertical-card__meta {
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+/* ===== CONTACT / FRANCHISE DETAILS ===== */
+.contact-infinium__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.contact-infinium__grid h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.3rem;
+}
+
+.contact-infinium__grid p {
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.contact-infinium__grid a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.contact-infinium__grid a:hover {
+  text-decoration: underline;
+}
+
+/* Hide central hair diagram illustration */
+.health-diagram .diagram-center {
+  display: none !important;
+}
+
+/* Top header: white background */
+.nav {
+  background-color: #ffffff !important;
+}
+
+.nav__inner {
+  background-color: transparent !important;
+}
+
+/* Hamburger icon: orange lines */
+.nav-icon span {
+  background-color: #f97316 !important; /* Infinium orange */
+}
+
+/* If there is an active state, keep it orange too */
+.nav-icon.nav-icon--menu span {
+  background-color: #f97316 !important;
+}
+
+/* Hamburger button: violet circular background */
+.nav-icon {
+  background-color: #110135; /* violet */
+  border-radius: 999px;
+  padding: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make sure the three lines stay orange on top of violet */
+.nav-icon span {
+  background-color: #f97316 !important; /* orange */
 }
