@@ -1,6 +1,6 @@
 :root {
-  --hero-green-start: #b8f316;
-  --hero-green-end: #a4e120;
+  --hero-green-start: #b0e227;
+  --hero-green-end: #9bd323;
   --dark: #1e1e1e;
   --nav-bg: #3d3c3c;
   --text-muted: rgba(0, 0, 0, 0.7);
@@ -5104,4 +5104,20 @@ img {
     margin: 0 !important;
     flex-shrink: 0 !important;
   }
+}
+
+/* Soft orange background for "Why Choose Infinium?" section */
+.why-infinium {
+  background-color: #f0c28a; /* very light orange */
+}
+
+/* Optional: give the inner content a soft card feel */
+.why-infinium .container {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Temporarily hide press logos strip */
+.press.section {
+  display: none !important;
 }
