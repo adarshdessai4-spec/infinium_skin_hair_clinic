@@ -4889,3 +4889,219 @@ img {
 .nav-icon span {
   background-color: #f97316 !important; /* orange */
 }
+
+/* === Mobile nav: logo left, hamburger right on same line === */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    height: auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 38px;      /* adjust up/down if you want */
+    width: auto;
+    display: block;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 0;
+    flex: 0 0 auto;
+  }
+
+  /* critical: bring hamburger into the flex row */
+  .nav-icon {
+    position: static !important;
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* === FORCE header: logo left, hamburger right on one line === */
+.nav {
+  background-color: #ffffff !important;
+}
+
+.nav__inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.6rem 1rem;
+}
+
+/* Logo block */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;   /* adjust if you want it a bit smaller */
+  width: auto;
+  display: block;
+}
+
+/* Right side (hamburger container) */
+.nav-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 auto;
+}
+
+/* Hamburger circle */
+.nav-icon {
+  position: static !important;   /* kill any absolute positioning */
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+/* Keep our violet circle + orange lines */
+.nav-icon {
+  background-color: #8b5cf6;
+  border-radius: 999px;
+  padding: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon span {
+  background-color: #f97316 !important;
+}
+
+/* ===== FINAL OVERRIDE: header layout ===== */
+
+/* Header bar */
+.nav {
+  background-color: #ffffff !important;
+  padding: 0.6rem 1rem !important;
+}
+
+/* Main row: logo left, hamburger right, NO wrapping */
+.nav__inner {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Logo */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.logo img {
+  height: 40px;          /* adjust 36–44 if you want */
+  width: auto;
+  display: block;
+}
+
+/* Right side */
+.nav-right {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 auto !important;
+}
+
+/* Hamburger button – kill all old positioning */
+.nav-icon,
+.nav-icon--menu {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Our styling: violet circle + orange lines */
+.nav-icon {
+  background-color: #16003b;   /* or keep #8b5cf6 if you prefer */
+  border-radius: 999px;
+  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon span {
+  background-color: #f97316 !important;
+}
+
+/* === MOBILE FIX: logo left, hamburger right, same line === */
+@media (max-width: 600px) {
+  .nav {
+    padding: 0.6rem 0.9rem !important;
+  }
+
+  /* 2 columns: logo | hamburger */
+  .nav__inner {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items: center !important;
+    column-gap: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .logo {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .logo img {
+    height: 60px;          /* adjust a bit up/down if needed */
+    width: auto;
+    display: block;
+    max-width: 70vw;       /* so it doesn’t push hamburger off-screen */
+  }
+
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    justify-self: end !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* make sure hamburger participates in layout, not floating */
+  .nav-icon,
+  .nav-icon--menu {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+}
