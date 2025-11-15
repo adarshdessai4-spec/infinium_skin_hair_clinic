@@ -1113,7 +1113,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-fab" target="_blank" rel="noopener">
+  <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
     <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
   </a>
 
@@ -1125,6 +1125,24 @@
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navButton = document.querySelector('.nav-icon--menu');
+      if (!navButton) return;
+      const rect = navButton.getBoundingClientRect();
+      const marker = document.createElement('div');
+      marker.id = 'debug-nav-state';
+      marker.textContent = JSON.stringify({
+        rect: {
+          x: rect.x,
+          y: rect.y,
+          width: rect.width,
+          height: rect.height,
+        },
+      });
+      document.body.appendChild(marker);
+    });
+  </script>
 </body>
 
 </html>
