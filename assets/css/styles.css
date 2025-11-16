@@ -311,8 +311,9 @@ img {
 
 /* --- Brand tabs: inline text with separators --- */
 .brand-tabs {
-  margin-left: auto;            /* pushes tabs to the right side */
+  margin-left: 0.5rem;
   display: flex;
+  margin-right: auto;
   align-items: center;
   gap: 0.75rem;
   white-space: nowrap;
@@ -321,7 +322,7 @@ img {
 .brand-tabs__link {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #4b5563;               /* grey text */
+  color: #4b5563;
   text-decoration: none;
   padding: 0 0.5rem;
 }
@@ -334,7 +335,7 @@ img {
 .brand-tabs__divider {
   width: 1px;
   height: 18px;
-  background: #e5e7eb;          /* thin light line between tabs */
+  background: #e5e7eb;
   display: inline-block;
 }
 
@@ -344,21 +345,27 @@ img {
   align-items: center;
   margin-left: 1.5rem;
   margin-right: 1rem;
+  flex: 0 0 auto;
 }
 
 .nav-search input {
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.8rem;
-  min-width: 200px;
-  max-width: 260px;
+  padding: 0.45rem 0.75rem 0.45rem 2.1rem;
+  font-size: 0.88rem;
+  min-width: 220px;
+  max-width: 320px;
   outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"%3E%3Ccircle cx=\"7\" cy=\"7\" r=\"5\"/%3E%3Cpath d=\"M11 11l3.5 3.5\"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
 }
 
 .nav-search input:focus {
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.3);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
 }
 
 /* Hamburger stays at extreme right */
@@ -632,10 +639,9 @@ img {
   border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-/* NEW: remove extra top border for second list
-   so only one line appears between Franchise Partner & Hair Test */
 .menu-overlay__list + .menu-overlay__list {
-  border-top: none;
+  margin-top: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .menu-overlay__list li {
@@ -679,7 +685,7 @@ img {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(-45deg);
-  margin-left: auto;
+  margin-left: 1rem;
 }
 
 .menu-overlay__grid {
@@ -820,14 +826,17 @@ img {
 }
 
 .review-card {
-  position: absolute;
-  right: clamp(1rem, 6vw, 6rem);
-  bottom: 1rem;
   background: var(--card-bg);
   padding: 1rem 1.3rem;
   border-radius: 20px;
   box-shadow: var(--shadow);
   width: 210px;
+}
+
+.hero-review {
+  position: absolute;
+  right: clamp(1rem, 6vw, 6rem);
+  bottom: 1rem;
 }
 
 .review-card img {
@@ -844,6 +853,15 @@ img {
   color: #f5a623;
   letter-spacing: 0.1em;
   font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .hero-review {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    margin-top: 1rem;
+  }
 }
 
 .press {
@@ -1276,7 +1294,7 @@ img {
 .essentials-track {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
   gap: 1.25rem;
 }
 
@@ -1306,6 +1324,21 @@ img {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .essentials-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+  }
+
+  .product-card {
+    min-width: clamp(220px, 80vw, 320px);
+    scroll-snap-align: start;
+  }
 }
 
 .ghost-link {
@@ -3435,6 +3468,14 @@ img {
   font-weight: 700;
 }
 
+.footer-legal {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
 @media (max-width: 900px) {
   .hero {
     padding-bottom: 6rem;
@@ -4754,7 +4795,7 @@ img {
   .hero-brand__main,
   .hero-brand__sub {
     text-align: center;
-    margin-left: auto;
+    margin-left: 1rem;
     margin-right: auto;
   }
 }
@@ -4785,7 +4826,7 @@ img {
   .hero-brand__main,
   .hero-brand__sub {
     text-align: center;
-    margin-left: auto;
+    margin-left: 1rem;
     margin-right: auto;
   }
 }
@@ -5324,6 +5365,11 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
   margin-top: 2.5rem;
+}
+
+.treatments.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .treatments-column h3 {
@@ -6048,7 +6094,7 @@ img {
 
 /* Tabs row (inline) */
 .brand-tabs {
-  margin-left: auto;                /* pushes tabs to the right of logo */
+  margin-left: 1rem;                /* pushes tabs to the right of logo */
   display: flex !important;         /* force row */
   flex-direction: row !important;
   align-items: center;

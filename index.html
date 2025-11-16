@@ -20,7 +20,7 @@
       </a>
 
       <!-- TABS: INLINE WITH SEPARATORS -->
-      <div class="brand-tabs">
+      <div class="brand-tabs nav-links">
         <a href="index.html" class="brand-tabs__link">
           Home
         </a>
@@ -102,7 +102,7 @@
         </p>
         <div class="menu-overlay__list-grid">
           <ul class="menu-overlay__list">
-            <li><a class="menu-overlay__link" href="#">My Plan</a></li>
+            
             <li>
               <a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a>
             </li>
@@ -120,18 +120,6 @@
             <li>
               <a class="menu-overlay__link" href="combos.html">Infinium Combos</a>
             </li>
-            <li>
-              <button type="button" class="menu-overlay__link menu-overlay__link--button" data-login-trigger>
-                Log In
-              </button>
-            </li>
-            <li>
-              <button type="button" class="menu-overlay__link menu-overlay__link--button" data-products-trigger
-                aria-haspopup="true" aria-controls="productsPanel">
-                <span>Products</span>
-                <span class="menu-overlay__chevron" aria-hidden="true"></span>
-              </button>
-            </li>
           </ul>
         </div>
       </section>
@@ -140,16 +128,16 @@
           <p class="menu-overlay__heading">How We Do It</p>
           <ul class="menu-overlay__list menu-overlay__list--single">
             <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
-            <li><a class="menu-overlay__link" href="#">Ingredients</a></li>
-            <li><a class="menu-overlay__link" href="#">Reviews</a></li>
-            <li><a class="menu-overlay__link" href="#">Hero's Page</a></li>
+            
+            
+            
           </ul>
         </section>
         <section class="menu-overlay__group">
           <p class="menu-overlay__heading">Who We Are</p>
           <ul class="menu-overlay__list menu-overlay__list--single">
-            <li><a class="menu-overlay__link" href="#">About Us</a></li>
-            <li><a class="menu-overlay__link" href="#">Blog</a></li>
+            
+            
           </ul>
         </section>
       </div>
@@ -161,13 +149,7 @@
           <a href="#" aria-label="WhatsApp">WA</a>
         </div>
       </section>
-      <section class="menu-overlay__group menu-overlay__group--apps">
-        <p class="menu-overlay__heading">Experience The Infinium App</p>
-        <div class="menu-overlay__apps">
-          <span class="menu-overlay__app-badge">Get it on Google Play</span>
-          <span class="menu-overlay__app-badge">Download on the App Store</span>
-        </div>
-      </section>
+      
     </div>
     <div class="products-panel" id="productsPanel" aria-hidden="true">
       <div class="products-panel__media" aria-hidden="true">
@@ -353,12 +335,10 @@
         <div class="hero-visual">
           <div class="image-wrap">
             <img src="assets/images/hero-couple.jpg" alt="Happy couple with great hair" />
-            <span class="squiggle squiggle-left"></span>
-            <span class="squiggle squiggle-right"></span>
           </div>
         </div>
 
-        <div class="review-card">
+        <div class="review-card hero-review">
           <div class="review-header">
             <img src="assets/images/google-logo.svg" alt="Google logo" />
             <div>
@@ -999,11 +979,12 @@
           <h2>The Essentials</h2>
           <span class="heading-underline"></span>
         </div>
-        <div class="essentials-slider">
-          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Previous products">
+        <div class="essentials-slider" data-essentials-slider>
+          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Previous products"
+            data-essentials-button="prev">
             &#10094;
           </button>
-          <div class="essentials-track">
+          <div class="essentials-track" data-essentials-track>
             <article class="product-card">
               <img src="assets/images/product-shampoo.jpg" alt="Anti-dandruff shampoo bottle" />
               <h3>Anti-Dandruff Shampoo with Ichthammol &amp; Aloe</h3>
@@ -1056,7 +1037,8 @@
               </div>
             </article>
           </div>
-          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Next products">
+          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Next products"
+            data-essentials-button="next">
             &#10095;
           </button>
         </div>
@@ -1088,8 +1070,8 @@
       </div>
     </section>
 
-    <!-- GOOGLE REVIEWS -->
-    <section class="reviews section">
+    <!-- GOOGLE REVIEWS (hidden) -->
+    <!-- GOOGLE REVIEWS --><section class="reviews section" hidden>
       <div class="container">
         <div class="section-heading">
           <h2>Google Reviews</h2>
@@ -1172,8 +1154,8 @@
           <div>
             <h3>Franchise &amp; Business</h3>
             <p>
-              <strong>Mignesh Bhai</strong>: 8488888840<br />
-              <strong>Dr. Kevin Rola</strong>: 8000546526
+              <strong>Mignesh Bhai</strong>: +918488888840<br />
+              <strong>Dr. Kevin Rola</strong>: +918000546526
             </p>
             <p>
               <strong>Email:</strong>
@@ -1235,48 +1217,26 @@
             <li>Return Policy</li>
           </ul>
         </div>
-        <div>
-          <h4>Centres</h4>
-          <ul>
-            <li>Pune</li>
-            <li>Nagpur</li>
-            <li>Thane</li>
-            <li>Navi Mumbai</li>
-            <li>Hyderabad</li>
-          </ul>
-        </div>
-        <div class="footer-app">
-          <h4>
-            Experience The Infinium Hair &amp; Skin Care Clinic App
-          </h4>
-          <div class="app-badges">
-            <span>Get it on Google Play</span>
-            <span>Download on the App Store</span>
-          </div>
-          <p>Registered Copyright 2025</p>
-          <p>
-            Tatvartha Health Pvt. Ltd.<br />
-            Unit no - 101, B wing, Building - 16, Interface, Off Link Road,
-            Malad (West), Mumbai - 400064.
-          </p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="social">
-          <span>Catch us on:</span>
-          <div class="social-links">
-            <span>Instagram</span>
-            <span>LinkedIn</span>
-            <span>Facebook</span>
-            <span>YouTube</span>
-          </div>
-        </div>
-        <div class="footer-logo">
-          Infinium Hair &amp; Skin Care Clinic.
-        </div>
       </div>
     </div>
-  </footer>
+      </div>
+    <div class="footer-bottom">
+      <div class="social">
+        <span>Catch us on:</span>
+        <div class="social-links">
+          <span>Instagram</span>
+          <span>LinkedIn</span>
+          <span>Facebook</span>
+          <span>YouTube</span>
+        </div>
+      </div>
+      <div class="footer-logo">
+        Infinium Hair &amp; Skin Care Clinic.
+      </div>
+    </div>
+    <p class="footer-legal">Registered Copyright 2025</p>
+  </div>
+</footer>
 
   <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
     <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
@@ -1286,28 +1246,11 @@
     <a href="franchise.html">Franchise</a>
     <a href="hair-test.html">Take Test</a>
     <button type="button" data-login-trigger>Log In</button>
+    <button type="button" data-menu-open>Menu</button>
   </nav>
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const navButton = document.querySelector('.nav-icon--menu');
-      if (!navButton) return;
-      const rect = navButton.getBoundingClientRect();
-      const marker = document.createElement('div');
-      marker.id = 'debug-nav-state';
-      marker.textContent = JSON.stringify({
-        rect: {
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-        },
-      });
-      document.body.appendChild(marker);
-    });
-  </script>
 </body>
 
 </html>

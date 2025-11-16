@@ -69,6 +69,9 @@
 
     menuButton.addEventListener('click', () => toggleMenu());
     closeButton.addEventListener('click', () => toggleMenu(false));
+    document.querySelectorAll('[data-menu-open]').forEach((btn) => {
+      btn.addEventListener('click', () => toggleMenu(true));
+    });
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay) {
         toggleMenu(false);
@@ -767,6 +770,29 @@
 
       beforeAfterSlider.querySelectorAll('[data-before-after-button]').forEach((button) => {
         const direction = button.dataset.beforeAfterButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    }
+  }
+
+  const essentialsSlider = document.querySelector('[data-essentials-slider]');
+  if (essentialsSlider) {
+    const track = essentialsSlider.querySelector('[data-essentials-track]');
+    if (track) {
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.product-card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      essentialsSlider.querySelectorAll('[data-essentials-button]').forEach((button) => {
+        const direction = button.dataset.essentialsButton === 'next' ? 1 : -1;
         button.addEventListener('click', () => {
           track.scrollBy({
             left: direction * computeScrollAmount(),
