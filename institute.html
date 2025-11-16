@@ -24,6 +24,10 @@
         </a>
 
         <div class="brand-tabs">
+          <a href="index.html" class="brand-tabs__link">
+            Home
+          </a>
+          <span class="brand-tabs__divider"></span>
           <a href="franchise.html" class="brand-tabs__link">
             Infinium Franchise Module
           </a>
@@ -56,6 +60,199 @@
         </div>
       </div>
     </nav>
+
+    <div
+      class="menu-overlay"
+      id="menuOverlay"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <button
+        class="menu-overlay__close"
+        type="button"
+        aria-label="Close menu"
+      >
+        &times;
+      </button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--divisions">
+          <p class="menu-overlay__heading">Explore Infinium</p>
+          <ul class="menu-overlay__list menu-overlay__list--brand-tabs">
+            <li>
+              <a class="menu-overlay__link" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="franchise.html"
+                >Infinium Franchise Module</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="institute.html"
+                >Infinium Aesthetics &amp; Cosmetic Institute</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="home-care-products.html"
+                >Infinium Home Care Products</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a
+            personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="#">My Plan</a></li>
+              <li>
+                <a class="menu-overlay__link" href="money-back.html"
+                  >Money Back Guarantee</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="referral.html">Referral</a>
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="franchise.html"
+                  >Franchise Partner</a
+                >
+              </li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li>
+                <a class="menu-overlay__link" href="hair-test.html"
+                  >Hair Test ™</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="combos.html"
+                  >Infinium Combos</a
+                >
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="menu-overlay__link menu-overlay__link--button"
+                  data-login-trigger
+                >
+                  Log In
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="menu-overlay__link menu-overlay__link--button"
+                  data-products-trigger
+                  aria-haspopup="true"
+                  aria-controls="productsPanel"
+                >
+                  <span>Products</span>
+                  <span
+                    class="menu-overlay__chevron"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="#">Infinium Science</a></li>
+              <li><a class="menu-overlay__link" href="#">Ingredients</a></li>
+              <li><a class="menu-overlay__link" href="#">Reviews</a></li>
+              <li><a class="menu-overlay__link" href="#">Hero's Page</a></li>
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="#">About Us</a></li>
+              <li><a class="menu-overlay__link" href="#">Blog</a></li>
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        <section class="menu-overlay__group menu-overlay__group--apps">
+          <p class="menu-overlay__heading">Experience The Infinium App</p>
+          <div class="menu-overlay__apps">
+            <span class="menu-overlay__app-badge">Get it on Google Play</span>
+            <span class="menu-overlay__app-badge"
+              >Download on the App Store</span
+            >
+          </div>
+        </section>
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button
+            type="button"
+            class="products-panel__back"
+            data-products-close
+          >
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- optional marquee, reuse if you want -->
     <!-- main content -->

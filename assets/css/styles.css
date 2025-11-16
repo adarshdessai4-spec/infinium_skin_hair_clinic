@@ -410,14 +410,13 @@ img {
   background: rgba(255, 255, 255, 0.98);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: none;
-  justify-content: space-around;
-  padding: 0.65rem 0.5rem env(safe-area-inset-bottom, 0);
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0.5rem;
+  padding-left: calc(0.75rem + env(safe-area-inset-left));
+  padding-right: calc(0.75rem + env(safe-area-inset-right));
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
   z-index: 90;
-}
-
-/* Thin vertical separators between Franchise / Take Test / Log In */
-.mobile-tab-bar > * + * {
-  border-left: 1px solid rgba(148, 163, 184, 0.8); /* soft grey line */
 }
 
 
@@ -431,22 +430,17 @@ img {
   font-size: 0.78rem;
   font-weight: 600;
   color: #0a64c7;
-  padding: 0.35rem 0.5rem;
-  border-radius: 999px;
+  padding: 0.65rem 0.5rem;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  min-width: 90px;
-}
-
-/* Thin vertical separators between Franchise / Take Test / Log In */
-.mobile-tab-bar a,
-.mobile-tab-bar button {
+  flex: 1;
+  min-width: auto;
   position: relative;
 }
-
-/* Draw a vertical line before every item that has a previous sibling */
+/* Thin vertical separators that span full tab height */
 .mobile-tab-bar a + a::before,
 .mobile-tab-bar a + button::before,
 .mobile-tab-bar button + a::before,
@@ -454,8 +448,8 @@ img {
   content: "";
   position: absolute;
   left: 0;
-  top: 25%;
-  bottom: 25%;
+  top: 0;
+  bottom: 0;
   width: 1px;
   background: rgba(148, 163, 184, 0.9); /* subtle professional grey */
 }
@@ -597,6 +591,14 @@ img {
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
   letter-spacing: 0.08em;
+}
+
+.menu-overlay__group--divisions {
+  padding-top: 0.5rem;
+}
+
+.menu-overlay__list--brand-tabs {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .menu-overlay__group {
