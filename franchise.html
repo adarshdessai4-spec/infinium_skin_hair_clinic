@@ -13,38 +13,11 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="franchise-body has-mobile-tab">
-    <!-- HEADER (same structure as index.html) -->
     <nav class="nav">
       <div class="nav__inner">
         <a class="logo" href="index.html">
-          <img
-            src="assets/images/brand_logo.png"
-            alt="Infinium Skin & Hair Clinic logo"
-          />
+          <img src="assets/images/brand_logo.png" alt="Infinium Skin & Hair Clinic logo" />
         </a>
-
-        <div class="brand-tabs">
-          <a href="index.html" class="brand-tabs__link">
-            Home
-          </a>
-          <span class="brand-tabs__divider"></span>
-          <a href="franchise.html" class="brand-tabs__link">
-            Infinium Franchise Module
-          </a>
-          <span class="brand-tabs__divider"></span>
-          <a href="institute.html" class="brand-tabs__link">
-            Infinium Aesthetics &amp; Cosmetic Institute
-          </a>
-          <span class="brand-tabs__divider"></span>
-          <a href="home-care-products.html" class="brand-tabs__link">
-            Infinium Home Care Products
-          </a>
-        </div>
-
-        <div class="nav-search">
-          <input type="search" placeholder="Search Infinium..." />
-        </div>
-
         <div class="nav-right">
           <button
             class="nav-icon nav-icon--menu"
@@ -61,83 +34,27 @@
       </div>
     </nav>
 
-    <!-- MENU OVERLAY (unchanged) -->
-    <div
-      class="menu-overlay"
-      id="menuOverlay"
-      aria-hidden="true"
-      tabindex="-1"
-    >
-      <button
-        class="menu-overlay__close"
-        type="button"
-        aria-label="Close menu"
-      >
-        &times;
-      </button>
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
       <div class="menu-overlay__panel">
         <div class="menu-overlay__brand">
           <span class="menu-overlay__logo">Infinium.</span>
         </div>
-        <section class="menu-overlay__group menu-overlay__group--divisions">
-          <p class="menu-overlay__heading">Explore Infinium</p>
-          <ul class="menu-overlay__list menu-overlay__list--brand-tabs">
-            <li>
-              <a class="menu-overlay__link" href="index.html"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a class="menu-overlay__link" href="franchise.html"
-                >Infinium Franchise Module</a
-              >
-            </li>
-            <li>
-              <a class="menu-overlay__link" href="institute.html"
-                >Infinium Aesthetics &amp; Cosmetic Institute</a
-              >
-            </li>
-            <li>
-              <a class="menu-overlay__link" href="home-care-products.html"
-                >Infinium Home Care Products</a
-              >
-            </li>
-          </ul>
-        </section>
         <section class="menu-overlay__group menu-overlay__group--primary">
           <p class="menu-overlay__heading">What We Do</p>
           <p class="menu-overlay__copy">
-            We help you take control of your hair loss journey in a
-            personalised, science-backed way.
+            We help you take control of your hair loss journey in a personalised, science-backed way.
           </p>
           <div class="menu-overlay__list-grid">
             <ul class="menu-overlay__list">
               
-              <li>
-                <a class="menu-overlay__link" href="money-back.html"
-                  >Money Back Guarantee</a
-                >
-              </li>
-              <li>
-                <a class="menu-overlay__link" href="referral.html">Referral</a>
-              </li>
-              <li>
-                <a class="menu-overlay__link" href="franchise.html"
-                  >Franchise Partner</a
-                >
-              </li>
+              <li><a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a></li>
+              <li><a class="menu-overlay__link" href="referral.html">Referral</a></li>
+              <li><a class="menu-overlay__link" href="franchise.html">Franchise Partner</a></li>
             </ul>
             <ul class="menu-overlay__list">
-              <li>
-                <a class="menu-overlay__link" href="hair-test.html"
-                  >Hair Test ™</a
-                >
-              </li>
-              <li>
-                <a class="menu-overlay__link" href="combos.html"
-                  >Infinium Combos</a
-                >
-              </li>
+              <li><a class="menu-overlay__link" href="hair-test.html">Hair Test ™</a></li>
+              <li><a class="menu-overlay__link" href="combos.html">Infinium Combos</a></li>
             </ul>
           </div>
         </section>
@@ -174,11 +91,7 @@
           <img src="assets/images/regimen-supplements.jpg" alt="" />
         </div>
         <div class="products-panel__body">
-          <button
-            type="button"
-            class="products-panel__back"
-            data-products-close
-          >
+          <button type="button" class="products-panel__back" data-products-close>
             &larr; Products
           </button>
           <div class="products-panel__columns">
@@ -223,43 +136,17 @@
       </div>
     </div>
 
-    <!-- LOGIN MODAL (unchanged) -->
-    <div
-      class="login-modal"
-      id="loginModal"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
       <div class="login-modal__overlay" data-login-close></div>
       <div class="login-modal__content" data-login-content>
-        <button
-          class="login-modal__close"
-          type="button"
-          aria-label="Close login"
-          data-login-close
-        >
-          &times;
-        </button>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
         <h2>Login with OTP</h2>
         <span class="login-modal__divider" aria-hidden="true"></span>
 
         <div class="login-step is-active" data-login-step="number">
           <div class="login-role" role="tablist">
-            <button
-              type="button"
-              class="login-role__btn is-active"
-              data-login-role="user"
-            >
-              User
-            </button>
-            <button
-              type="button"
-              class="login-role__btn"
-              data-login-role="admin"
-            >
-              Admin
-            </button>
+            <button type="button" class="login-role__btn is-active" data-login-role="user">User</button>
+            <button type="button" class="login-role__btn" data-login-role="admin">Admin</button>
           </div>
           <p class="login-modal__label">Enter your mobile number</p>
           <label class="login-modal__input" for="loginMobile">
@@ -273,53 +160,21 @@
               placeholder="Enter mobile number"
             />
           </label>
-          <p class="login-modal__help">
-            We will send you an One Time Password on this mobile number
-          </p>
-          <button
-            type="button"
-            class="login-modal__cta"
-            data-login-action="send"
-          >
-            Send OTP
-          </button>
-          <button
-            type="button"
-            class="login-modal__cta login-modal__cta--ghost"
-            data-admin-test-login
-            hidden
-          >
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
             Direct Admin Login (Test)
           </button>
-          <button
-            type="button"
-            class="login-modal__cta login-modal__cta--ghost"
-            data-user-test-login
-            hidden
-          >
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
             Direct User Login (Test)
           </button>
           <div class="login-socials">
-            <button
-              type="button"
-              class="login-social login-social--google"
-            >
-              <img
-                src="assets/images/google-logo.svg"
-                alt=""
-                aria-hidden="true"
-              />
+            <button type="button" class="login-social login-social--google">
+              <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />
               <span>Continue with Google</span>
             </button>
-            <button
-              type="button"
-              class="login-social login-social--apple"
-            >
-              <img
-                src="assets/images/apple-logo.svg"
-                alt=""
-                aria-hidden="true"
-              />
+            <button type="button" class="login-social login-social--apple">
+              <img src="assets/images/apple-logo.svg" alt="" aria-hidden="true" />
               <span>Continue with Apple</span>
             </button>
           </div>
@@ -328,86 +183,29 @@
         <div class="login-step" data-login-step="otp">
           <p class="login-modal__label">Enter OTP</p>
           <div class="otp-inputs" data-otp-inputs>
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
-            <input
-              type="text"
-              maxlength="1"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              data-otp-input
-            />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
           </div>
           <p class="login-modal__help">
-            Enter the OTP sent to
-            <strong data-otp-target>+91 XXXXXXXX</strong>
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
           </p>
           <p class="login-modal__resend">
-            <button type="button" data-login-resend disabled>
-              Resend
-            </button>
-            <span
-              >OTP in <span data-login-countdown>60</span> sec</span
-            >
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
           </p>
-          <button
-            type="button"
-            class="login-modal__cta"
-            data-login-action="verify"
-          >
-            Verify OTP
-          </button>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
         </div>
 
         <div class="login-step" data-login-step="profile">
           <div class="login-success" data-login-success>
-            <span
-              class="login-success__icon"
-              aria-hidden="true"
-              >✓</span
-            >
+            <span class="login-success__icon" aria-hidden="true">✓</span>
             <div>
               <h3>OTP verified</h3>
-              <p>
-                Your number
-                <strong data-login-success-phone
-                  >+91 XXXXXXXX</strong
-                >
-                is confirmed.
-              </p>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
             </div>
           </div>
           <p class="login-modal__label">Tell us your name</p>
@@ -419,257 +217,106 @@
               autocomplete="name"
             />
           </label>
-          <p class="login-modal__help">
-            We personalise your plan with this name.
-          </p>
-          <button
-            type="button"
-            class="login-modal__cta"
-            data-login-action="complete"
-          >
-            Continue
-          </button>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
         </div>
 
         <p class="login-modal__error" data-login-error role="alert"></p>
       </div>
     </div>
 
-    <main class="division-main">
-      <section class="section">
-        <div class="container">
-          <div class="module-hero">
-            <div class="module-hero__copy">
-              <p class="module-hero__eyebrow">Infinium Franchise Module</p>
-              <h1>Scale a proven hair &amp; skin care business</h1>
-              <p>
-                Partner with Infinium to launch a turnkey clinic backed by dermatologist protocols, unified marketing, and
-                a telemedicine command centre. Start serving clients in as little as 45 days.
-              </p>
-              <div class="module-stats">
-                <div class="module-stat">
-                  <strong>30+</strong>
-                  <span>Cities operational</span>
-                </div>
-                <div class="module-stat">
-                  <strong>150K+</strong>
-                  <span>Active members</span>
-                </div>
-                <div class="module-stat">
-                  <strong>92%</strong>
-                  <span>Satisfaction score</span>
-                </div>
-              </div>
-            </div>
-            <div class="module-hero__media">
-              <img src="assets/images/hero-couple.jpg" alt="Infinium franchise partners" />
-            </div>
-          </div>
+    <main class="franchise-main">
+      <section class="franchise-hero">
+        <div>
+          <p class="franchise-pill">Partner with Infinium</p>
+          <h1>Scale a proven hair &amp; skin care business</h1>
+          <p>
+            Join our network of clinics with dermatologist-designed protocols, centralised marketing, and a powerful
+            telemedicine stack. Start serving clients in as little as 45 days.
+          </p>
+          <ul class="franchise-hero__stats">
+            <li><strong>30+</strong><span>Cities</span></li>
+            <li><strong>150K+</strong><span>Active members</span></li>
+            <li><strong>92%</strong><span>Satisfaction score</span></li>
+          </ul>
+        </div>
+        <div class="franchise-hero__card">
+          <h3>What you get</h3>
+          <ul>
+            <li>End-to-end clinic setup playbook</li>
+            <li>Certified dermatologist + coach panel</li>
+            <li>Centralised marketing &amp; CRM support</li>
+            <li>Exclusive Infinium product distribution</li>
+          </ul>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <h2>Why partners pick Infinium</h2>
-            <span class="heading-underline"></span>
+      <section class="franchise-grid">
+        <article class="franchise-form-card">
+          <h2>Franchise Application</h2>
+          <p>Fill in your details and our expansion team will reach out within 2 business days.</p>
+          <form class="franchise-form" data-franchise-form>
+            <label>
+              Full Name
+              <input type="text" name="name" placeholder="Enter your name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="name@email.com" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" placeholder="+91 98765 43210" required />
+            </label>
+            <label>
+              City / Region
+              <input type="text" name="city" placeholder="Where do you plan to operate?" required />
+            </label>
+            <label>
+              Investment Capacity
+              <select name="investment" required>
+                <option value="">Select range</option>
+                <option value="20-30L">₹20L – ₹30L</option>
+                <option value="30-50L">₹30L – ₹50L</option>
+                <option value="50L+">₹50L+</option>
+              </select>
+            </label>
+            <label>
+              Existing Healthcare Experience
+              <textarea name="experience" rows="3" placeholder="Tell us about your current setup"></textarea>
+            </label>
+            <label class="franchise-checkbox">
+              <input type="checkbox" name="nda" required />
+              <span>I agree to be contacted by the Infinium franchise team.</span>
+            </label>
+            <button type="submit" class="primary-cta" data-franchise-submit>Submit Application</button>
+          </form>
+          <div class="franchise-success" data-franchise-success hidden>
+            <h3>Thank you!</h3>
+            <p>
+              Your franchise interest has been recorded. Our team will reach out with the detailed prospectus and next
+              steps.
+            </p>
           </div>
-          <div class="module-card-grid">
-            <article class="module-card">
-              <h3>Clinic in a Box</h3>
-              <p>Space planning, equipment procurement, SOPs, recruitment help, and launch marketing in one playbook.</p>
-            </article>
-            <article class="module-card">
-              <h3>Medical Leadership</h3>
-              <p>Central panel of dermatologists, plastic surgeons, and nutritionists for consultations + audits.</p>
-            </article>
-            <article class="module-card">
-              <h3>Tech &amp; CRM</h3>
-              <p>Lead capture, EMR, payment links, and app-based follow-ups keep every patient in one system.</p>
-            </article>
-            <article class="module-card">
-              <h3>Product Exclusivity</h3>
-              <p>Be the only authorised retailer for Infinium’s result-oriented home-care range in your territory.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+        </article>
 
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <h2>Launch journey</h2>
-            <span class="heading-underline"></span>
+        <aside class="franchise-info-card">
+          <h3>Ideal Partner Profile</h3>
+          <ul>
+            <li>Experience running a clinic, pharmacy, or wellness centre</li>
+            <li>Ability to invest in a 800 – 1200 sq.ft. facility</li>
+            <li>Local team that can deliver empathetic customer service</li>
+            <li>Alignment with evidence-based treatments and compliance</li>
+          </ul>
+          <div class="franchise-contact">
+            <p>Need quick answers?</p>
+            <a href="tel:+917621871654">+91 7621 871 654</a>
+            <a href="mailto:partners@infinium.com">partners@infinium.com</a>
           </div>
-          <div class="module-process">
-            <div class="module-process__step">
-              <h3>Discovery &amp; Fitment</h3>
-              <p>Meet our expansion team, review business model, and align on city/territory.</p>
-            </div>
-            <div class="module-process__step">
-              <h3>Location &amp; Build</h3>
-              <p>We help finalise property, layout, interiors, and procurement list.</p>
-            </div>
-            <div class="module-process__step">
-              <h3>Training &amp; Hiring</h3>
-              <p>Clinical + sales teams attend Infinium Academy for protocols and patient experience.</p>
-            </div>
-            <div class="module-process__step">
-              <h3>Go-Live &amp; Growth</h3>
-              <p>Launch campaigns, weekly dashboards, and ongoing marketing + medical support.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <h2>Investment models</h2>
-            <span class="heading-underline"></span>
-          </div>
-          <div class="module-tier-grid">
-            <article class="module-tier">
-              <h4>Compact Studio <small>(₹20-30L)</small></h4>
-              <ul>
-                <li>600-800 sq.ft. space</li>
-                <li>Essential derma &amp; laser equipment</li>
-                <li>2-bed treatment zone</li>
-              </ul>
-            </article>
-            <article class="module-tier">
-              <h4>Signature Clinic <small>(₹30-50L)</small></h4>
-              <ul>
-                <li>1000-1300 sq.ft. space</li>
-                <li>Hair transplant OT + counselling pods</li>
-                <li>Dedicated product retail zone</li>
-              </ul>
-            </article>
-            <article class="module-tier">
-              <h4>Flagship Centre <small>(₹50L+)</small></h4>
-              <ul>
-                <li>Multi-floor, multi specialty</li>
-                <li>In-house PRP lab + academy classroom</li>
-                <li>City-wide marketing budgets</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <h2>Partner with us</h2>
-            <span class="heading-underline"></span>
-          </div>
-          <div class="franchise-grid">
-            <article class="franchise-form-card">
-              <h3>Franchise Application</h3>
-              <p>Share your details and we’ll send the detailed prospectus plus a call slot within 2 business days.</p>
-              <form class="franchise-form" data-franchise-form>
-                <label>
-                  Full Name
-                  <input type="text" name="name" placeholder="Enter your name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" name="email" placeholder="name@email.com" required />
-                </label>
-                <label>
-                  Phone
-                  <input type="tel" name="phone" placeholder="+91 98765 43210" required />
-                </label>
-                <label>
-                  City / Region
-                  <input type="text" name="city" placeholder="Where do you plan to operate?" required />
-                </label>
-                <label>
-                  Investment Capacity
-                  <select name="investment" required>
-                    <option value="">Select range</option>
-                    <option value="20-30L">₹20L – ₹30L</option>
-                    <option value="30-50L">₹30L – ₹50L</option>
-                    <option value="50L+">₹50L+</option>
-                  </select>
-                </label>
-                <label>
-                  Existing Healthcare Experience
-                  <textarea name="experience" rows="3" placeholder="Tell us about your current setup"></textarea>
-                </label>
-                <label class="franchise-checkbox">
-                  <input type="checkbox" name="nda" required />
-                  <span>I agree to be contacted by the Infinium franchise team.</span>
-                </label>
-                <button type="submit" class="primary-cta" data-franchise-submit>
-                  Submit Application
-                </button>
-              </form>
-              <div class="franchise-success" data-franchise-success hidden>
-                <h3>Thank you!</h3>
-                <p>Your franchise interest has been recorded. Expect an email + call with next steps shortly.</p>
-              </div>
-            </article>
-            <aside class="franchise-info-card">
-              <h3>Ideal Partner Profile</h3>
-              <ul>
-                <li>Experience running a clinic, pharmacy, or wellness centre</li>
-                <li>Ability to invest in an 800 – 1200 sq.ft. facility</li>
-                <li>Local team that can deliver empathetic customer service</li>
-                <li>Alignment with evidence-based treatments and compliance</li>
-              </ul>
-              <div class="franchise-contact">
-                <p>Need quick answers?</p>
-                <a href="tel:+917621871654">+91 7621 871 654</a>
-                <a href="mailto:partners@infinium.com">partners@infinium.com</a>
-              </div>
-              <div class="module-card" style="margin-top:1rem;">
-                <h3>Support Hours</h3>
-                <p>Mon - Sat: 9AM to 8PM IST</p>
-                <p>Dedicated partner success manager post onboarding.</p>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <h2>FAQs</h2>
-            <span class="heading-underline"></span>
-          </div>
-          <div class="faq-list">
-            <article class="faq-item">
-              <h4>How long does it take to launch?</h4>
-              <p>Average launch time is 45-60 days once the property is finalised and franchise agreement is signed.</p>
-            </article>
-            <article class="faq-item">
-              <h4>What ongoing support do I receive?</h4>
-              <p>Weekly performance reviews, marketing creatives, doctor panels, staff training refreshers, and annual audits.</p>
-            </article>
-            <article class="faq-item">
-              <h4>Do I need prior medical experience?</h4>
-              <p>Not mandatory. We expect strong operations or retail experience while Infinium provides medical governance.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="module-cta-panel">
-            <div>
-              <h3>Ready to build your Infinium clinic?</h3>
-              <p>Speak to our expansion lead for a personalised P&amp;L walkthrough.</p>
-            </div>
-            <a class="primary-cta" href="tel:+917621871654">Call Expansion Desk</a>
-          </div>
-        </div>
+        </aside>
       </section>
     </main>
 
-    <!-- WHATSAPP FAB -->
     <a
       class="whatsapp-fab"
       href="https://wa.me/917621871654"
@@ -677,18 +324,14 @@
       rel="noopener"
       aria-label="Chat on WhatsApp at +91 7621 871 654"
     >
-      <img
-        src="assets/images/whatsApp-icon.png"
-        alt="WhatsApp"
-        class="whatsapp-fab__icon"
-      />
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" aria-hidden="true" />
+      <span>WhatsApp</span>
     </a>
-
-    <!-- MOBILE TAB BAR -->
     <nav class="mobile-tab-bar" aria-label="Quick actions">
       <a href="franchise.html">Franchise</a>
       <a href="hair-test.html">Take Test</a>
       <button type="button" data-login-trigger>Log In</button>
+      <button type="button" data-menu-open>Menu</button>
     </nav>
 
     <script src="assets/js/config.js"></script>
@@ -696,9 +339,7 @@
     <script>
       (function () {
         const form = document.querySelector('[data-franchise-form]');
-        const successCard = document.querySelector(
-          '[data-franchise-success]'
-        );
+        const successCard = document.querySelector('[data-franchise-success]');
         const submitBtn = document.querySelector('[data-franchise-submit]');
 
         if (!form || !successCard || !submitBtn) return;
@@ -713,10 +354,7 @@
             submitBtn.textContent = 'Submit Application';
             successCard.hidden = false;
             successCard.classList.add('is-visible');
-            successCard.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
-            });
+            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }, 800);
         });
       })();

@@ -584,6 +584,12 @@ img {
   font-size: 0.85rem;
 }
 
+@media (max-width: 768px) {
+  .menu-overlay__group--contact {
+    display: none;
+  }
+}
+
 .hero-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -697,7 +703,26 @@ img {
 .review-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 0.5rem;
+}
+
+.review-header__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  line-height: 1.15;
+}
+
+.review-header__rating strong {
+  font-size: 1.2rem;
+}
+
+.review-header__rating .stars {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 }
 
 .stars {
@@ -1160,6 +1185,9 @@ img {
   background: transparent;
   font-weight: 600;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: var(--dark);
 }
 
 @media (max-width: 768px) {
@@ -3286,23 +3314,34 @@ img {
 
 .footer-bottom {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.5rem;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .social-links {
   display: flex;
   gap: 1rem;
   font-size: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .footer-logo {
   font-size: 1.5rem;
   font-weight: 700;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
