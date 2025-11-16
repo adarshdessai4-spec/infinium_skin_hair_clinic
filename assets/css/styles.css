@@ -5944,6 +5944,13 @@ img {
   }
 }
 
+/* Hide the hamburger toggle on mobile screens */
+@media (max-width: 768px) {
+  .nav-icon--menu {
+    display: none !important;
+  }
+}
+
 /* Soft lavender gradient for "Why Choose Infinium?" section */
 .why-infinium {
   background: linear-gradient(180deg, #fef9ff 0%, #f5e1ff 100%);
@@ -6204,6 +6211,6 @@ img {
   .nav-icon.nav-icon--menu {
     width: 44px;
     height: 44px;
-    display: inline-flex !important;
+    display: none !important;
   }
 }
