@@ -1321,12 +1321,34 @@ img {
 }
 
 @media (max-width: 768px) {
+  .essentials-slider {
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .essentials-slider > .slider-arrow {
+    display: none;
+  }
+
   .essentials-track {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0.5rem 0.75rem;
+    margin: 0 -0.5rem;
+  }
+
+  .essentials-track::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .essentials-track::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 999px;
   }
 
   .product-card {
@@ -5372,8 +5394,16 @@ img {
 }
 
 .treatments.section {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+.treatments .section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.treatments .heading-underline {
+  margin-bottom: 1.5rem;
 }
 
 .treatments-column h3 {
