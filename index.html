@@ -139,7 +139,7 @@
         <section class="menu-overlay__group">
           <p class="menu-overlay__heading">How We Do It</p>
           <ul class="menu-overlay__list menu-overlay__list--single">
-            <li><a class="menu-overlay__link" href="#">Infinium Science</a></li>
+            <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
             <li><a class="menu-overlay__link" href="#">Ingredients</a></li>
             <li><a class="menu-overlay__link" href="#">Reviews</a></li>
             <li><a class="menu-overlay__link" href="#">Hero's Page</a></li>
@@ -486,62 +486,188 @@
           <span class="heading-underline"></span>
         </div>
 
-        <div class="treatments-grid">
-          <div class="treatments-column">
-            <h3>Skin Treatments</h3>
-            <ul>
-              <li>Acne &amp; Pimple Treatment</li>
-              <li>Acne Scar Treatment</li>
-              <li>Pigmentation / Melasma Treatment</li>
-              <li>Anti-Aging Treatment</li>
-              <li>Skin Brightening / Whitening</li>
-              <li>Chemical Peels</li>
-              <li>Carbon Laser Facial</li>
-              <li>Hydrafacial</li>
-              <li>Glow Facial</li>
-              <li>Dermaplaning</li>
-              <li>PRP Skin Rejuvenation</li>
-              <li>Wart / Mole Removal</li>
-              <li>Dark Circles Treatment</li>
-              <li>Underarm / Body Whitening</li>
-              <li>Skin Tightening Treatment</li>
-              <li>Tattoo Removal</li>
-              <li>Skin Allergy &amp; Infection Treatment</li>
-            </ul>
+        <div class="treatment-sliders">
+          <div class="treatment-slider" data-treatment-slider="skin">
+            <div class="treatment-slider__header">
+              <h3>Skin Treatments</h3>
+              <div class="treatment-slider__controls" aria-label="Skin treatment slider controls">
+                <button class="slider-arrow" type="button" aria-label="Previous skin treatment" data-slider-button="prev">
+                  &#10094;
+                </button>
+                <button class="slider-arrow" type="button" aria-label="Next skin treatment" data-slider-button="next">
+                  &#10095;
+                </button>
+              </div>
+            </div>
+            <div class="treatment-slider__track" data-treatment-track>
+              <article class="treatment-card">
+                <img src="assets/images/story-natural.jpg" alt="Dermatologist treating acne patient" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Acne &amp; Pimple Control</h4>
+                  <p>Advanced peels, LED therapy and doctor-prescribed actives calm inflammation and prevent new breakouts.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/menu-overlay-lifestyle.jpg" alt="Brightening facial session" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Pigmentation Reset</h4>
+                  <p>Customised lasers paired with pigment-correcting serums fade melasma, tanning and stubborn spots evenly.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hero-couple1.jpg" alt="Glowing skin closeup" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>HydraGlow Facial</h4>
+                  <p>Hydrafacial steps infuse antioxidants and hyaluronic boosters for instant glass-skin level smoothness.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/product-herbs.jpg" alt="PRP skin therapy essentials" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>PRP Skin Rejuvenation</h4>
+                  <p>Microneedling with PRP stimulates collagen to soften acne scars, pores and early signs of aging.</p>
+                </div>
+              </article>
+            </div>
           </div>
 
-          <div class="treatments-column">
-            <h3>Hair Treatments</h3>
-            <ul>
-              <li>Hair Fall Treatment</li>
-              <li>Hair Growth (PRP / GFC Therapy)</li>
-              <li>Dandruff Treatment</li>
-              <li>Hair Loss Medicine Therapy</li>
-              <li>Laser Hair Removal (Full Body)</li>
-              <li>Hair Transplant (FUE / FUT)</li>
-              <li>Crown, Beard &amp; Moustache Transplant</li>
-              <li>Hair Thinning Treatment</li>
-            </ul>
-
-            <h3>Body &amp; Cosmetic Procedures</h3>
-            <ul>
-              <li>Weight Loss Treatments</li>
-              <li>Stretch Marks Removal</li>
-              <li>Body Polishing</li>
-              <li>Permanent Laser Hair Reduction</li>
-              <li>Microblading &amp; Semi-Permanent Makeup</li>
-            </ul>
+          <div class="treatment-slider" data-treatment-slider="hair">
+            <div class="treatment-slider__header">
+              <h3>Hair Treatments</h3>
+              <div class="treatment-slider__controls" aria-label="Hair treatment slider controls">
+                <button class="slider-arrow" type="button" aria-label="Previous hair treatment" data-slider-button="prev">
+                  &#10094;
+                </button>
+                <button class="slider-arrow" type="button" aria-label="Next hair treatment" data-slider-button="next">
+                  &#10095;
+                </button>
+              </div>
+            </div>
+            <div class="treatment-slider__track" data-treatment-track>
+              <article class="treatment-card">
+                <img src="assets/images/story-transformation.jpg" alt="PRP scalp session" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Advanced PRP Boost</h4>
+                  <p>Growth factors + GFC concentrate strengthen follicles, restart dormant roots and slow active hair fall.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hero-couple.jpg" alt="Man checking improved hairline" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Hair Transplant FUE+</h4>
+                  <p>Precision FUE/FUT grafting redesigned hairlines while maintaining natural density and mature aesthetics.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/product-shampoo.jpg" alt="Anti-dandruff care kit" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Dandruff Detox Program</h4>
+                  <p>Medical-grade exfoliation with antifungal serums clears flakes, itch and scalp build-up within weeks.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hair_skin_anatomy.jpg" alt="Illustration of hair follicle" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Laser Hair Reduction</h4>
+                  <p>US-FDA diode lasers target unwanted growth on face or body with painless cooling for all skin tones.</p>
+                </div>
+              </article>
+            </div>
           </div>
 
-          <div class="treatments-column">
-            <h3>Surgical Procedures</h3>
-            <ul>
-              <li>Hair Transplant</li>
-              <li>Mole / Tag Removal</li>
-              <li>Scar Revision</li>
-              <li>Earlobe Repair</li>
-              <li>Lipoma / Cyst Removal</li>
-            </ul>
+          <div class="treatment-slider" data-treatment-slider="body">
+            <div class="treatment-slider__header">
+              <h3>Body &amp; Cosmetic Procedures</h3>
+              <div class="treatment-slider__controls" aria-label="Body &amp; cosmetic slider controls">
+                <button class="slider-arrow" type="button" aria-label="Previous body treatment" data-slider-button="prev">
+                  &#10094;
+                </button>
+                <button class="slider-arrow" type="button" aria-label="Next body treatment" data-slider-button="next">
+                  &#10095;
+                </button>
+              </div>
+            </div>
+            <div class="treatment-slider__track" data-treatment-track>
+              <article class="treatment-card">
+                <img src="assets/images/menu-overlay-lifestyle.jpg" alt="Body contour therapy" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Weight Loss Coaching</h4>
+                  <p>Custom nutrition, inch-loss therapies and EMS sculpting tighten stubborn zones safely.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/story-natural.jpg" alt="Stretch marks removal session" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Stretch Marks Revision</h4>
+                  <p>Microneedling plus collagen infusions fade deep stretch marks and improve skin bounce.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hero-couple1.jpg" alt="Body polishing treatment" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Body Polishing Glow</h4>
+                  <p>Detox scrubs and hydrating masks smoothen uneven tone for back, arms and bridal prep.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/product-shampoo.jpg" alt="Laser hair reduction device" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Laser Hair Reduction</h4>
+                  <p>Permanent diode laser programs for underarms, bikini or full body with ice-cool comfort.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hero-couple.jpg" alt="Semi-permanent makeup session" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Microblading &amp; PMU</h4>
+                  <p>Expert brow microblading and lip tints enhance features with natural gradients.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="treatment-slider" data-treatment-slider="surgical">
+            <div class="treatment-slider__header">
+              <h3>Surgical Procedures</h3>
+              <div class="treatment-slider__controls" aria-label="Surgical slider controls">
+                <button class="slider-arrow" type="button" aria-label="Previous surgical procedure" data-slider-button="prev">
+                  &#10094;
+                </button>
+                <button class="slider-arrow" type="button" aria-label="Next surgical procedure" data-slider-button="next">
+                  &#10095;
+                </button>
+              </div>
+            </div>
+            <div class="treatment-slider__track" data-treatment-track>
+              <article class="treatment-card">
+                <img src="assets/images/story-transformation.jpg" alt="Hair transplant surgery" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Hair Transplant</h4>
+                  <p>FUE/FUT grafting with dense packing recreates natural hairlines and beard designs.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/product-herbs.jpg" alt="Mole removal tools" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Mole / Tag Removal</h4>
+                  <p>Radiofrequency and excision techniques remove skin tags or moles leaving minimal marks.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/hair_skin_anatomy.jpg" alt="Scar revision illustration" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Scar Revision</h4>
+                  <p>Plastic surgeons blend old scars into surrounding skin using lasers and suturing finesse.</p>
+                </div>
+              </article>
+              <article class="treatment-card">
+                <img src="assets/images/story-priya.jpg" alt="Earlobe repair session" loading="lazy" />
+                <div class="treatment-card__body">
+                  <h4>Earlobe &amp; Cyst Repair</h4>
+                  <p>Quick OPD procedures fix torn lobes or remove lipomas/cysts with precise closures.</p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </div>
@@ -549,25 +675,43 @@
 
     <!-- BEFORE & AFTER RESULTS (placeholder grid) -->
     <section class="before-after section" id="before-after">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Before &amp; After Results</h2>
-          <span class="heading-underline"></span>
-        </div>
-        <p>
-          Real patient transformations showcasing the success of Infinium’s
-          skin, hair and aesthetic treatments.
-        </p>
-        <div class="before-after__grid">
-          <!-- Add real photos here when available -->
-          <div class="before-after__card before-after__card--placeholder">
-            <span>Before / After Image</span>
+      <div class="container before-after__container">
+        <div class="before-after__content">
+          <div class="section-heading">
+            <h2>Before &amp; After Results</h2>
+            <span class="heading-underline"></span>
           </div>
-          <div class="before-after__card before-after__card--placeholder">
-            <span>Before / After Image</span>
-          </div>
-          <div class="before-after__card before-after__card--placeholder">
-            <span>Before / After Image</span>
+          <p>
+            Real patient transformations showcasing the success of Infinium’s
+            skin, hair and aesthetic treatments.
+          </p>
+          <div class="before-after__slider" data-before-after-slider>
+            <button class="slider-arrow slider-arrow--light" type="button" aria-label="Previous result"
+              data-before-after-button="prev">
+              &#10094;
+            </button>
+            <div class="before-after__track" data-before-after-track>
+              <!-- Add real photos here when available -->
+              <article class="before-after__card before-after__card--placeholder">
+                <span>Before / After Image</span>
+              </article>
+              <article class="before-after__card before-after__card--placeholder">
+                <span>Before / After Image</span>
+              </article>
+              <article class="before-after__card before-after__card--placeholder">
+                <span>Before / After Image</span>
+              </article>
+              <article class="before-after__card before-after__card--placeholder">
+                <span>Before / After Image</span>
+              </article>
+              <article class="before-after__card before-after__card--placeholder">
+                <span>Before / After Image</span>
+              </article>
+            </div>
+            <button class="slider-arrow slider-arrow--light" type="button" aria-label="Next result"
+              data-before-after-button="next">
+              &#10095;
+            </button>
           </div>
         </div>
       </div>
@@ -748,8 +892,8 @@
       </div>
     </section>
 
-    <!-- DOCTORS -->
-    <section class="doctors section" id="doctors">
+    <!-- TODO: Restore Meet Our Doctors when updated bios/photos are ready -->
+    <section class="doctors section" id="doctors" hidden data-temp-hidden="meet-our-doctors">
       <div class="container">
         <div class="section-heading">
           <h2>Meet Our Doctors</h2>
@@ -841,9 +985,9 @@
           <p class="community-subtitle">
             Get expert hair advice in our exclusive Telegram community.
           </p>
-          <button class="primary-cta" type="button">
+          <a class="primary-cta" href="https://t.me/infiniumhairclinic" target="_blank" rel="noopener">
             Join The Community
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -933,9 +1077,9 @@
               Follow a simple daily routine. Best results when used for 5
               months.
             </p>
-            <button class="primary-cta" type="button">
+            <a class="primary-cta" href="science.html">
               The Science
-            </button>
+            </a>
           </div>
           <div class="regimen-media">
             <img src="assets/images/regimen-supplements.jpg" alt="Supplements" />

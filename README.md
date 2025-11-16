@@ -18,12 +18,15 @@ Static marketing site with supporting OTP login flow powered by MSG91.
   - `user-portal.html` mirrors the production hero, “Your Root Causes” module, journey timeline, and shortcut tiles.
   - “Talk to your Hair Coach” opens `coach-call.html` (WhatsApp CTA, book call button, reschedule modal).
   - “My Recommended Plan” opens `recommended-plan.html` (assessment report, kit list, add-ons, total).
+  - `science.html` showcases the dedicated Infinium Science deep-dive with tri-science explanations and CTA flows.
 - **Admin portal**
   - `admin-portal.html` shows KPIs, user table, and recent activity, all hydrated from `/api/admin/stats`.
 - **Backend**
   - Express app is modularised (`server/src/...`) with dedicated routes/controllers.
   - MSG91 OTP + Google OAuth helper endpoints live in the auth module.
   - Prisma/PostgreSQL schema (`prisma/schema.prisma`) defines users, profiles, meds, sessions, etc., with graceful fallbacks until a DB is connected.
+- **Content toggles**
+  - `Meet Our Doctors` section on `index.html` is temporarily hidden (see `data-temp-hidden="meet-our-doctors"`). Remove the `hidden` attribute once updated bios/photos are ready so we don't forget.
 
 ### Local Development
 

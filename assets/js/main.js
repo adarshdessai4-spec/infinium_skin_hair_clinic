@@ -728,6 +728,55 @@
     });
   }
 
+  const treatmentSliders = document.querySelectorAll('[data-treatment-slider]');
+  if (treatmentSliders.length) {
+    treatmentSliders.forEach((slider) => {
+      const track = slider.querySelector('[data-treatment-track]');
+      if (!track) return;
+
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.treatment-card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      const buttons = slider.querySelectorAll('[data-slider-button]');
+      buttons.forEach((button) => {
+        const direction = button.dataset.sliderButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    });
+  }
+
+  const beforeAfterSlider = document.querySelector('[data-before-after-slider]');
+  if (beforeAfterSlider) {
+    const track = beforeAfterSlider.querySelector('[data-before-after-track]');
+    if (track) {
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.before-after__card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      beforeAfterSlider.querySelectorAll('[data-before-after-button]').forEach((button) => {
+        const direction = button.dataset.beforeAfterButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    }
+  }
+
   const combosRoot = document.querySelector('.combos-body');
   if (combosRoot) {
     const plansGrid = combosRoot.querySelector('.combos-plans__grid');
