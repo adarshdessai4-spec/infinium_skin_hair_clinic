@@ -783,6 +783,8 @@ img {
 
 .hero-visual {
   justify-self: end;
+  position: relative;
+  width: min(100%, 520px);
 }
 
 .image-wrap {
@@ -835,8 +837,9 @@ img {
 
 .hero-review {
   position: absolute;
-  right: clamp(1rem, 6vw, 6rem);
-  bottom: 1rem;
+  right: clamp(0.75rem, 3vw, 1.75rem);
+  bottom: clamp(0.75rem, 3vw, 1.75rem);
+  width: clamp(170px, 35vw, 220px);
 }
 
 .review-card img {
@@ -853,15 +856,6 @@ img {
   color: #f5a623;
   letter-spacing: 0.1em;
   font-size: 0.9rem;
-}
-
-@media (max-width: 900px) {
-  .hero-review {
-    position: relative;
-    right: 0;
-    bottom: 0;
-    margin-top: 1rem;
-  }
 }
 
 .press {
@@ -3596,9 +3590,11 @@ img {
     width: min(420px, 90vw);
   }
 
-  .review-card {
-    width: 100%;
-    margin: 2rem auto 0;
+  .hero-review {
+    width: min(190px, 55vw);
+    right: 0.75rem;
+    bottom: 0.75rem;
+    margin: 0;
   }
 
   .press-logos {
@@ -3627,6 +3623,14 @@ img {
 
   .footer-columns ul {
     align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-review {
+    width: min(150px, 65vw);
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 }
 
