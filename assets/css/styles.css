@@ -6092,7 +6092,7 @@ img {
 
 /* Logo size (desktop) */
 .logo img {
-  height: 70px;   /* try 48–56px till it looks right */
+  height: 90px;   /* try 48–56px till it looks right */
   width: auto;
   display: block;
 }
@@ -6285,5 +6285,30 @@ img {
     width: 44px;
     height: 44px;
     display: none !important;
+  }
+}
+
+/* --- Mobile logo sizing/centering fix --- */
+@media (max-width: 768px) {
+  .nav__inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.35rem 1rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .logo {
+    width: auto !important;
+    max-width: 200px !important;
+    justify-content: center !important;
+    margin: 0 auto;
+  }
+
+  .logo img {
+    height: clamp(52px, 14vw, 68px) !important;
+    width: auto !important;
+    margin: 0 auto;
+    display: block;
   }
 }
