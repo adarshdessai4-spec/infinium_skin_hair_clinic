@@ -6312,3 +6312,31 @@ img {
     display: block;
   }
 }
+
+/* --- Mobile-only header: center logo, hide everything else --- */
+@media (max-width: 768px) {
+  .nav__inner {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 0.6rem 1rem !important;
+  }
+
+  .brand-tabs,
+  .nav-search,
+  .nav-right {
+    display: none !important;
+  }
+
+  .logo {
+    margin: 0 auto !important;
+    width: auto !important;
+    justify-content: center !important;
+  }
+
+  .logo img {
+    height: clamp(58px, 20vw, 74px) !important;
+    width: auto !important;
+  }
+}
