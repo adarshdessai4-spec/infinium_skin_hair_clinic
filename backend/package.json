@@ -1,0 +1,39 @@
+{
+  "name": "infinium_website_hair_clinic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "start:server": "node server/index.js",
+    "dev:server": "node server/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic/issues"
+  },
+  "homepage": "https://github.com/adarshdessai4-spec/infinium_skin_hair_clinic#readme",
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "axios": "^1.13.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "googleapis": "^166.0.0",
+    "razorpay": "^2.9.6"
+  },
+  "devDependencies": {
+    "prisma": "^6.1.0"
+  }
+}
